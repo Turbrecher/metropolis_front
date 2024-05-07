@@ -1,0 +1,98 @@
+.login
+    display: block
+    .titulo
+        color: #ffdd0e
+        display: grid
+        text-align: center
+        margin: 0
+        padding: 0
+    .formulario_login
+        display: block
+        background: #0a1c3a
+        width: 90%
+        margin: 0 auto
+
+        h4
+            margin-bottom: 1rem
+            text-align: center
+            color: white
+            a
+                border: solid transparent
+                text-decoration: none
+                color: #0068c8
+                transition: border ease 0.2s
+
+
+                &:hover
+                    border-bottom: solid
+                    transition: border ease 0.2s
+
+        form
+            display: grid
+            margin: 0 auto
+            text-align: left
+            row-gap: 1rem
+            margin-bottom: 1rem
+
+            label
+                color: white
+
+            input[type=text], input[type=password]
+                border: solid transparent 1px
+                border-bottom: solid #2d3141 1px
+                background: transparent
+                color: white
+                transition: border-color ease 0.5s
+                padding: 0.5rem
+
+                &:hover
+                    border-bottom: solid white 1px
+                    ransition: border-color ease 0.5s
+
+                &:focus
+                    outline: none
+                    color: white
+
+                *
+                    margin-bottom: 1rem
+
+            .submit
+                border: solid transparent
+                background: #0068c8
+                color: white
+                padding: 1rem
+                transition: scale ease 0.5s
+
+                &:hover
+                    scale: 102%
+                    transition: scale ease 0.5s
+
+            
+
+@media screen and (width > $xs)
+    .login
+        margin: 6rem 0
+        .titulo
+            margin-top: 3rem
+            margin-bottom: 2rem
+
+        .formulario_login
+            width: 80%
+            padding: 1rem
+            height: 600px
+
+
+@media screen and ( width > $lg  )
+    .login
+        margin: 6rem 0
+        .titulo
+            margin-top: 3rem
+            margin-bottom: 2rem
+
+        .formulario_login
+            width: 40%
+            padding: 3rem
+            height: 600px
+            
+                
+                

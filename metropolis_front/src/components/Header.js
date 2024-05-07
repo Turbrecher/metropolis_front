@@ -3,10 +3,14 @@ import logo from '../images/logotipo.png'
 
 export function Header() {
   return (
+
     <header>
+      <a href='/'>
         <div className="logotipo">
-            <img src={logo} alt=""/>
+          <img src={logo} alt="" />
         </div>
-    </header>
+      </a>
+    </header >
+
   )
 }

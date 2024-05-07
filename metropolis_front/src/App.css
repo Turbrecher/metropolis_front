@@ -3,8 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: "Noticia Text";
-color: white; }
-  
+  color: white; }
 
 body {
   background: #051122;
@@ -74,7 +73,7 @@ footer {
     text-align: center; }
   footer .enlaces_interes {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     grid-template-rows: auto;
     justify-content: center;
     align-items: center;
@@ -192,20 +191,23 @@ footer {
     justify-content: center;
     gap: 3rem;
     width: 100%; }
-    .cartelera .peliculas .pelicula .img {
-      overflow: hidden;
-      margin: 0 auto; }
-      .cartelera .peliculas .pelicula .img img {
-        width: 100%;
-        scale: 100%;
+    .cartelera .peliculas .pelicula {
+      color: white; }
+      .cartelera .peliculas .pelicula .img {
         overflow: hidden;
-        transition: scale ease 1s; }
-        .cartelera .peliculas .pelicula .img img:hover {
-          scale: 110%;
+        margin: 0 auto; }
+        .cartelera .peliculas .pelicula .img img {
+          width: 100%;
+          scale: 100%;
+          overflow: hidden;
           transition: scale ease 1s; }
+          .cartelera .peliculas .pelicula .img img:hover {
+            scale: 110%;
+            transition: scale ease 1s; }
   .cartelera .titulo {
     text-align: center;
-    margin-bottom: 3rem; }
+    margin-bottom: 3rem;
+    color: white; }
 
 @media screen and (width > 0px) and (width <= 576px) {
   .cartelera .peliculas {
@@ -251,6 +253,8 @@ footer {
       width: 100%; } }
 .precios {
   margin-bottom: 1rem; }
+  .precios .titulo {
+    color: white; }
   .precios .tarjetas {
     display: grid; }
     .precios .tarjetas .tarjeta {
@@ -395,7 +399,8 @@ footer {
     margin: 0 auto; }
     .login .formulario_login h4 {
       margin-bottom: 1rem;
-      text-align: center; }
+      text-align: center;
+      color: white; }
       .login .formulario_login h4 a {
         border: solid transparent;
         text-decoration: none;
@@ -410,6 +415,8 @@ footer {
       text-align: left;
       row-gap: 1rem;
       margin-bottom: 1rem; }
+      .login .formulario_login form label {
+        color: white; }
       .login .formulario_login form input[type=text], .login .formulario_login form input[type=password] {
         border: solid transparent 1px;
         border-bottom: solid #2d3141 1px;
@@ -470,7 +477,8 @@ footer {
     margin: 0 auto; }
     .register .formulario_register h4 {
       margin-bottom: 1rem;
-      text-align: center; }
+      text-align: center;
+      color: white; }
       .register .formulario_register h4 a {
         border: solid transparent;
         text-decoration: none;
@@ -485,6 +493,8 @@ footer {
       text-align: left;
       row-gap: 1rem;
       margin-bottom: 1rem; }
+      .register .formulario_register form label {
+        color: white; }
       .register .formulario_register form input[type=text], .register .formulario_register form input[type=password], .register .formulario_register form input[type=date] {
         border: solid transparent 1px;
         border-bottom: solid #2d3141 1px;
@@ -546,7 +556,8 @@ footer {
     margin: 0 auto; }
     .contacto .formulario_contacto h4 {
       margin-bottom: 1rem;
-      text-align: center; }
+      text-align: center;
+      color: white; }
       .contacto .formulario_contacto h4 a {
         border: solid transparent;
         text-decoration: none;
@@ -561,6 +572,8 @@ footer {
       text-align: left;
       row-gap: 1rem;
       margin-bottom: 1rem; }
+      .contacto .formulario_contacto form label {
+        color: white; }
       .contacto .formulario_contacto form input[type=text], .contacto .formulario_contacto form input[type=password], .contacto .formulario_contacto form input[type=date], .contacto .formulario_contacto form textarea {
         border: solid transparent 1px;
         border-bottom: solid #2d3141 1px;
@@ -614,5 +627,77 @@ footer {
       .contacto .formulario_contacto .mapa {
         margin-top: 3rem;
         width: 100%; } }
+.cookies {
+  width: 60%;
+  margin: 6rem auto; }
+  .cookies .apartado {
+    margin-bottom: 5rem; }
+    .cookies .apartado .titulo {
+      font-size: 5rem;
+      text-align: center;
+      margin-bottom: 1rem; }
+    .cookies .apartado h5 {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 1rem; }
+    .cookies .apartado p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem; }
 
-/*# sourceMappingURL=styles.css.map */
+.privacidad {
+  width: 60%;
+  margin: 6rem auto; }
+  .privacidad .apartado {
+    margin-bottom: 5rem; }
+    .privacidad .apartado .titulo {
+      font-size: 5rem;
+      text-align: center;
+      margin-bottom: 1rem; }
+    .privacidad .apartado h5 {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 1rem; }
+    .privacidad .apartado p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem; }
+    .privacidad .apartado ul {
+      margin: 0 auto;
+      width: fit-content; }
+      .privacidad .apartado ul li {
+        text-align: justify;
+        font-size: 1.5rem; }
+
+.detallesPelicula {
+  display: grid;
+  row-gap: 2rem;
+  width: 80%;
+  margin: 4rem auto; }
+  .detallesPelicula .trailer {
+    height: 300px;
+    overflow: hidden; }
+  .detallesPelicula .informacionPelicula {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 5rem; }
+    .detallesPelicula .informacionPelicula .portada {
+      width: 300px; }
+      .detallesPelicula .informacionPelicula .portada img {
+        width: 100%; }
+  .detallesPelicula .sesionesPelicula {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    gap: 2rem; }
+    .detallesPelicula .sesionesPelicula .sesion {
+      border: solid white 1px;
+      border-bottom-right-radius: 1.5rem;
+      padding: 2rem;
+      width: 200px;
+      position: relative;
+      top: 0;
+      transition: top ease 0.5s; }
+      .detallesPelicula .sesionesPelicula .sesion:hover {
+        top: -10px;
+        transition: top ease 0.5s; }
+
+/*# sourceMappingURL=App.css.map */
