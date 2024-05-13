@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { obtenerPeliculas } from '../../api/detallePelicula.api'
 
-export function DetallesPelicula(props) {
+export function DetallesPelicula() {
+
+    const [pelicula, setPelicula] = useState([])
+    const { id } = useParams()
+
+
+    useEffect((id) => {
+
+        async function cargarPelicula() {
+            const respuesta = await obtenerPeliculas(1)
+            setPelicula(respuesta.data)
+            console.log(respuesta.data)
+        }
+
+        cargarPelicula()
+    }, [])
+
+
     return (
 
         <>
@@ -9,28 +28,26 @@ export function DetallesPelicula(props) {
             <div className="detallesPelicula">
 
                 <div className='trailer'>
-                    <video width={'100%'} controls>
-                        <source src='../videos/unravel.mp4' />
-                    </video>
+                    <iframe src={pelicula.url_trailer} title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <div className='informacionPelicula'>
 
                     <div className='portada'>
-                        <img src='../images/carteles/cartel_jojo.jpg'></img>
+                        <img src= {pelicula.cartel }></img>
                     </div>
 
                     <div className='informacion_principal'>
-                        <h2>{props.titulo}</h2>
+                        <h2>{pelicula.titulo}</h2>
 
                         <h4>Director/es</h4>
-                        <p>{props.director}</p>
+                        <p>{pelicula.director}</p>
 
                         <h4>Actores</h4>
-                        <p>{props.actores}</p>
+                        <p>{pelicula.actores}</p>
 
                         <h4>Sinopsis</h4>
-                        <p>{props.sinopsis}</p>
+                        <p>{pelicula.sinopsis}</p>
 
 
                     </div>
@@ -38,16 +55,16 @@ export function DetallesPelicula(props) {
                     <div className='informacion_adicional'>
 
                         <h4>Duracion</h4>
-                        <p>{props.duracion}</p>
+                        <p>{pelicula.duracion}</p>
 
                         <h4>Fecha de estreno</h4>
-                        <p>{props.fecha_estreno}</p>
+                        <p>{pelicula.fecha_lanzamiento}</p>
 
                         <h4>Generos</h4>
                         //Poner generos
 
                         <h4>Clasificacion</h4>
-                        <p>{props.pegi}</p>
+                        <p>{pelicula.pegi}</p>
 
 
                     </div>

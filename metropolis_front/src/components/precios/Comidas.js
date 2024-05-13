@@ -1,33 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Tarjeta } from './Tarjeta'
+import { useEffect } from 'react';
+import { obtenerComidas } from '../../api/comidas.api';
 
 export function Comidas(props) {
+
+    const [tarjetasComida, setTarjetasComida] = useState([])
+
+    //Asignamos el valor del get a la variable TarjetasComida
+    useEffect(() => {
+
+        async function cargarComidas() {
+            const respuesta = await obtenerComidas()
+            setTarjetasComida(respuesta.data)
+        }
+
+        cargarComidas()
+    },[]);
+
     return (
 
         <>
-            <h1 class="titulo">COMIDAS</h1>
+            <h1 className="titulo">COMIDAS</h1>
 
-            <div class="tarjetas">
-                <Tarjeta
-                    titulo="PALOMITAS S"
-                    descripcion="¡PEQUEÑITO PEQUEÑITO!"
-                    imagen="imagen"
-                    precio="3.00"
-                />
+            <div className="tarjetas">
 
-                <Tarjeta
-                    titulo="PALOMITAS M"
-                    descripcion="¡EL TAMAÑO IDEAL!"
-                    imagen="imagen"
-                    precio="4.50"
-                />
+                {tarjetasComida.map(e => (
+                    <Tarjeta
+                        key={e.id}
+                        titulo={e.nombre}
+                        descripcion={e.descripcion}
+                        imagen={e.foto}
+                        precio={e.precio}
+                    />
+                ))}
 
-                <Tarjeta
-                    titulo="PALOMITAS XL"
-                    descripcion="¡PARA GLOTONES!"
-                    imagen="imagen"
-                    precio="6.00"
-                />
             </div>
         </>
 

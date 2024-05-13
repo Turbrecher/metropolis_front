@@ -1,33 +1,41 @@
 import React from 'react'
 import { Tarjeta } from './Tarjeta'
+import { obtenerMenus } from '../../api/menus.api';
+import { useState, useEffect } from 'react';
 
 export function Menus(props) {
+
+    const [tarjetasMenu, setTarjetasMenu] = useState([])
+
+    //Asignamos el valor del get a la variable TarjetasComida
+    useEffect(() => {
+
+        async function cargarMenus() {
+            const respuesta = await obtenerMenus()
+            setTarjetasMenu(respuesta.data)
+        }
+
+        cargarMenus()
+    }, []);
+
+
     return (
 
         <>
-            <h1 class="titulo">MENUS</h1>
+            <h1 className="titulo">MENUS</h1>
 
-            <div class="tarjetas">
-                <Tarjeta
-                    titulo="MENU PAREJA"
-                    descripcion="¡PERFECTO PARA CITAS!"
-                    imagen="imagen"
-                    precio="7.50"
-                />
+            <div className="tarjetas">
+                {tarjetasMenu.map(e => (
 
-                <Tarjeta
-                    titulo="MENU INFANTIL"
-                    descripcion="¡PARA LOS MAS PEQUES!"
-                    imagen="imagen"
-                    precio="5.00"
-                />
+                    <Tarjeta
+                        key={e.id}
+                        titulo={e.nombre}
+                        descripcion={e.descripcion}
+                        imagen={e.foto}
+                        precio={e.precio}
+                    />
 
-                <Tarjeta
-                    titulo="MENU AHORRO"
-                    descripcion="¡PARA DORMIR TRANQUILO!"
-                    imagen="imagen"
-                    precio="5.00"
-                />
+                ))}
             </div>
         </>
 
