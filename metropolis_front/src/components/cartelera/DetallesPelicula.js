@@ -11,7 +11,7 @@ export function DetallesPelicula() {
     useEffect((id) => {
 
         async function cargarPelicula() {
-            const respuesta = await obtenerPeliculas(1)
+            const respuesta = await obtenerPeliculas(6)
             setPelicula(respuesta.data)
             console.log(respuesta.data)
         }

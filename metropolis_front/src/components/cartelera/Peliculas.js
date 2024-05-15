@@ -12,6 +12,7 @@ export function Peliculas(props) {
         async function cargarPeliculas() {
             const respuesta = await obtenerPeliculas()
             setTarjetasPelicula(respuesta.data)
+            console.log(respuesta.data)
         }
 
         cargarPeliculas()
@@ -33,7 +34,7 @@ export function Peliculas(props) {
                 <div className="peliculas">
 
                     {tarjetasPelicula.map((e) => (
-                        <TarjetaPelicula titulo={e.titulo} imagen={e.foto} id_pelicula={e.id} />
+                        <TarjetaPelicula titulo={e.titulo} imagen={e.cartel} id_pelicula={e.id} />
                     ))}
 
                 </div>

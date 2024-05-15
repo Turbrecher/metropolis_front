@@ -9,6 +9,8 @@ import { Precios } from "./pages/Precios.jsx";
 import { Reserva } from "./pages/Reserva.jsx";
 import { PoliticaPrivacidad } from "./pages/PoliticaPrivacidad.jsx";
 import { PoliticaCookies } from "./pages/PoliticaCookies.jsx";
+import { Logout } from "./pages/Logout.jsx";
+import { Perfil } from "./pages/Perfil.jsx";
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
           <Route path="/pelicula" element={<InfoPelicula />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Perfil />} />
           <Route path="/precios" element={<Precios />} />
           <Route path="/reserva" element={<Reserva />} />
           <Route path="/privacidad" element={<PoliticaPrivacidad />} />

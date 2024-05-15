@@ -28,7 +28,7 @@ export function FormularioRegistro(props) {
         );
 
         
-        navigate("/cartelera")
+        navigate("/login")
 
     }
 
