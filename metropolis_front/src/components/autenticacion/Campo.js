@@ -10,6 +10,7 @@ export function Campo(props) {
                 name = {props.name}
                 id= {props.name}
                 autoComplete="off"
+                value={props.value}
             />
         </>
     )

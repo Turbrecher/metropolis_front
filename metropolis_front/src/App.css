@@ -746,4 +746,84 @@ footer {
         border-radius: 100%;
         margin: 0 auto; }
 
+.profile {
+  display: block; }
+  .profile .titulo {
+    color: #ffdd0e;
+    display: grid;
+    text-align: center;
+    margin: 0;
+    padding: 0; }
+  .profile .formulario_profile {
+    display: block;
+    background: #0a1c3a;
+    width: 90%;
+    margin: 0 auto; }
+    .profile .formulario_profile h4 {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: white; }
+      .profile .formulario_profile h4 a {
+        border: solid transparent;
+        text-decoration: none;
+        color: #0068c8;
+        transition: border ease 0.2s; }
+        .profile .formulario_profile h4 a:hover {
+          border-bottom: solid;
+          transition: border ease 0.2s; }
+    .profile .formulario_profile form {
+      display: grid;
+      margin: 0 auto;
+      text-align: left;
+      row-gap: 1rem;
+      margin-bottom: 1rem; }
+      .profile .formulario_profile form label {
+        color: white; }
+      .profile .formulario_profile form input[type=text], .profile .formulario_profile form input[type=password], .profile .formulario_profile form input[type=date] {
+        border: solid transparent 1px;
+        border-bottom: solid #2d3141 1px;
+        background: transparent;
+        color: white;
+        color-scheme: dark;
+        transition: border-color ease 0.5s;
+        padding: 0.5rem; }
+        .profile .formulario_profile form input[type=text]:hover, .profile .formulario_profile form input[type=password]:hover, .profile .formulario_profile form input[type=date]:hover {
+          border-bottom: solid white 1px;
+          transition: border-color ease 0.5s; }
+        .profile .formulario_profile form input[type=text]:focus, .profile .formulario_profile form input[type=password]:focus, .profile .formulario_profile form input[type=date]:focus {
+          outline: none;
+          color: white; }
+        .profile .formulario_profile form input[type=text] *, .profile .formulario_profile form input[type=password] *, .profile .formulario_profile form input[type=date] * {
+          margin-bottom: 1rem; }
+      .profile .formulario_profile form .submit {
+        border: solid transparent;
+        background: #0068c8;
+        color: white;
+        padding: 1rem;
+        transition: scale ease 0.5s; }
+        .profile .formulario_profile form .submit:hover {
+          scale: 102%;
+          transition: scale ease 0.5s; }
+
+@media screen and (width > 0px) {
+  .profile {
+    margin: 6rem 0; }
+    .profile .titulo {
+      margin-top: 3rem;
+      margin-bottom: 2rem; }
+    .profile .formulario_profile {
+      width: 80%;
+      padding: 1rem;
+      height: fit-content; } }
+@media screen and (width > 992px) {
+  .profile {
+    margin: 6rem 0; }
+    .profile .titulo {
+      margin-top: 3rem;
+      margin-bottom: 2rem; }
+    .profile .formulario_profile {
+      width: 40%;
+      padding: 3rem;
+      height: fit-content; } }
+
 /*# sourceMappingURL=App.css.map */
