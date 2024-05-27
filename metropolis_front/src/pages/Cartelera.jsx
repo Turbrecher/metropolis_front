@@ -12,7 +12,6 @@ export function Cartelera() {
 
       <Peliculas />
 
-
       <Footer />
     </>
   );

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { Campo } from './Campo';
 
 export function InfoPerfil(props) {
-
     const navigate = useNavigate()
     const [usuarios, setUsuarios] = useState([])
 
@@ -56,7 +55,7 @@ export function InfoPerfil(props) {
     async function edit() {
 
         let usuario = {
-            "id":id,
+            "id": id,
             "username": username,
             "password": password,
             "first_name": first_name,
@@ -76,8 +75,6 @@ export function InfoPerfil(props) {
 
     useEffect(() => {
         getUserInfo()
-
-
     }, [])
 
 
