@@ -34,7 +34,7 @@ export function Peliculas(props) {
                 <div className="peliculas">
 
                     {tarjetasPelicula.map((e) => (
-                        <TarjetaPelicula titulo={e.titulo} imagen={e.cartel} id_pelicula={e.id} />
+                        <TarjetaPelicula titulo={e.titulo} imagen={e.cartel} id_pelicula={e.id} key={e.id} />
                     ))}
 
                 </div>

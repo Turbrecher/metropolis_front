@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { obtenerPeliculas } from '../../api/detallePelicula.api'
+import { obtenerPeliculas, obtenerSesionesPeliculas } from '../../api/detallePelicula.api'
+import { Sesion } from './Sesion'
 
-export function DetallesPelicula() {
+export function DetallesPelicula(props) {
 
     const [pelicula, setPelicula] = useState([])
-    const { id } = useParams()
+    const [sesionesPelicula, setSesionesPelicula] = useState([])
+    const { key } = useParams()
+    const {idSesion,setIdSesion} = useState()
 
 
-    useEffect((id) => {
+    useEffect(() => {
 
         async function cargarPelicula() {
-            const respuesta = await obtenerPeliculas(6)
+            const respuesta = await obtenerPeliculas(key)
             setPelicula(respuesta.data)
-            console.log(respuesta.data)
+        }
+
+        async function cargarSesionesPelicula() {
+            const respuesta = await obtenerSesionesPeliculas(key)
+            setSesionesPelicula(respuesta.data)
         }
 
         cargarPelicula()
+        cargarSesionesPelicula()
     }, [])
 
 
@@ -28,13 +36,13 @@ export function DetallesPelicula() {
             <div className="detallesPelicula">
 
                 <div className='trailer'>
-                    <iframe src={pelicula.url_trailer} title="Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src={pelicula.url_trailer} title="Trailer" frameBorder="0"  allowFullScreen></iframe>
                 </div>
 
                 <div className='informacionPelicula'>
 
                     <div className='portada'>
-                        <img src= {pelicula.cartel }></img>
+                        <img src={pelicula.cartel}></img>
                     </div>
 
                     <div className='informacion_principal'>
@@ -61,7 +69,7 @@ export function DetallesPelicula() {
                         <p>{pelicula.fecha_lanzamiento}</p>
 
                         <h4>Generos</h4>
-                        //Poner generos
+                        <p>{pelicula.genero}</p>
 
                         <h4>Clasificacion</h4>
                         <p>{pelicula.pegi}</p>
@@ -74,25 +82,14 @@ export function DetallesPelicula() {
 
                 <div className='sesionesPelicula'>
 
-                    <div className='sesion'>
-                        <h2>15:45</h2>
-                        <h5>Sala 4</h5>
-                    </div>
 
-                    <div className='sesion'>
-                        <h2>15:45</h2>
-                        <h5>Sala 4</h5>
-                    </div>
-
-                    <div className='sesion'>
-                        <h2>15:45</h2>
-                        <h5>Sala 4</h5>
-                    </div>
-
-                    <div className='sesion'>
-                        <h2>15:45</h2>
-                        <h5>Sala 4</h5>
-                    </div>
+                    {sesionesPelicula.map((sesion) => (
+                        <Sesion
+                        key = {sesion.id}
+                            hora={sesion.hora}
+                            sala={sesion.sala.nombre}
+                        />
+                    ))}
 
                 </div>
 
