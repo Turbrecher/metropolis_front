@@ -1,28 +1,52 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { Codigo } from "../components/reserva/Codigo";
+import { useParams } from "react-router-dom";
+import { obtenerSesion } from "../api/reservas.api";
 
 export function Reserva() {
+  const { id_sesion } = useParams();
+  const [sesion, setSesion] = useState([])
+  const [sillones, setSillones] = useState([])
+  const [recuadrosSillones, setRecuadrosSillones] = useState ([])
 
-  //Numero de filas y de columnas
-  let filas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  let columnas = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  useEffect(() => {
 
-  let primeraFila = filas.map(()=>{
-    return <div className="sillon" style={{background:"#ffdd0e"}}></div>;
-  })
+    async function cargarSesion() {
+      const respuesta = await obtenerSesion(id_sesion);
+      setSesion(respuesta.data);
+      setSillones(respuesta.data.sala.sillones)
 
-  //Creamos un array con 10 sillones que representa una fila
-  let gridFila = filas.map(() => {
-    return <div className="sillon"></div>;
-  });
+      //CREAMOS TODAS LAS ETIQUETAS DE LOS SILLONES
+      setRecuadrosSillones (respuesta.data.sala.sillones.map((sillon)=>{
 
-  //Por cada columna, pintamos una fila en el grid completo, otro array.
-  let gridCompleto = columnas.map(() => {
-    return gridFila;
-  });
+        let sillones_ocupados = respuesta.data.sillones_ocupados
+
+        //CONVERTIMOS EL ARRAY DE SILLONES OCUPADOS EN UN ARRAY CON SUS IDS
+        let sillones_ocupados_ids = []
+        for(let i = 0;i<sillones_ocupados.length;i++){
+          sillones_ocupados_ids.push(sillones_ocupados[i].id)
+        }
+
+        //COMPROBAMOS QUE SI EL SILLON DE LOS DISPONIBLES EN LA SALA ESTA OCUPADO EN LA SESION ACTUAL
+        if(sillones_ocupados_ids.includes(sillon.id)){
+          return <div key={sillon} className="sillon" style={{background:"#bc2016"}}></div>
+        }
+
+        return <div key={sillon} href="Un lugar" className="sillon"></div>
+      }
+    
+    ))
+    }
+    cargarSesion()
+  }, []);
+  
+
+
+
 
   return (
     <>
@@ -30,22 +54,16 @@ export function Reserva() {
       <Nav />
 
       <div className="reserva">
-
-        <div className="pantalla">
-          Pantalla
-        </div>
+        <div className="pantalla">Pantalla</div>
 
         <div className="sillones">
-          {primeraFila}
-          {gridCompleto}
+          {recuadrosSillones}
         </div>
 
         <div className="leyenda">
           <Codigo descripcion="Libre" color="#20c249aa" />
-          <Codigo descripcion="Adaptado" color="#ffdd0e" />
           <Codigo descripcion="Ocupado" color="#bc2016" />
         </div>
-
       </div>
 
       <Footer />

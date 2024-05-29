@@ -27,7 +27,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Perfil />} />
           <Route path="/precios" element={<Precios />} />
-          <Route path="/reserva" element={<Reserva />} />
+          <Route path="/reserva/:id_sesion" element={<Reserva />} />
           <Route path="/privacidad" element={<PoliticaPrivacidad />} />
           <Route path="/cookies" element={<PoliticaCookies />} />
           <Route path="/pelicula/:key" element={<InfoPelicula />} />

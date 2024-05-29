@@ -32,7 +32,6 @@ export function DetallesPelicula(props) {
 
         <>
 
-
             <div className="detallesPelicula">
 
                 <div className='trailer'>
@@ -85,7 +84,8 @@ export function DetallesPelicula(props) {
 
                     {sesionesPelicula.map((sesion) => (
                         <Sesion
-                        key = {sesion.id}
+                            id_sesion = {sesion.id}
+                            key = {sesion.id}
                             hora={sesion.hora}
                             sala={sesion.sala.nombre}
                         />

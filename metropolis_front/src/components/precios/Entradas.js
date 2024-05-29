@@ -1,33 +1,37 @@
 import React from 'react'
+import {useEffect, useState} from 'react'
 import { Tarjeta } from './Tarjeta'
+import { obtenerEntradas } from '../../api/entradas.api';
 
 export function Entradas() {
+
+    const [tarjetasPrecio, setTarjetasPrecio] = useState([])
+
+    //Asignamos el valor del get a la variable TarjetasComida
+    useEffect(() => {
+
+        async function cargarPrecios() {
+            const respuesta = await obtenerEntradas()
+            setTarjetasPrecio(respuesta.data)
+        }
+
+        cargarPrecios()
+    }, []);
+
     return (
 
         <>
             <h1 className="titulo">ENTRADAS</h1>
             <div className="tarjetas">
 
-                <Tarjeta
-                    titulo="DIARIO"
-                    descripcion="¡LUNES, MARTES Y JUEVES!"
-                    imagen="imagen"
-                    precio="6.50"
+                {tarjetasPrecio.map((tarjeta)=>(
+                    <Tarjeta
+                    titulo={tarjeta.nombre}
+                    descripcion={tarjeta.descripcion}
+                    imagen={tarjeta.foto}
+                    precio={tarjeta.precio}
                 />
-
-                <Tarjeta
-                    titulo="DIA DEL ESPECTADOR"
-                    descripcion="¡TODOS LOS MIERCOLES!"
-                    imagen="imagen"
-                    precio="4.50"
-                />
-
-                <Tarjeta
-                    titulo="FESTIVOS"
-                    descripcion="¡FINES DE SEMANA Y FESTIVOS!"
-                    imagen="imagen"
-                    precio="7.50"
-                />
+                ))}
             </div>
         </>
 
