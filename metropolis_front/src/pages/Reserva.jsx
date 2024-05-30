@@ -4,16 +4,23 @@ import { Header } from "../components/Header";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { Codigo } from "../components/reserva/Codigo";
-import { useParams } from "react-router-dom";
 import { obtenerSesion } from "../api/reservas.api";
+import { getCookie } from "../components/autenticacion/getCookie";
+import { useNavigate, useParams } from 'react-router-dom'
 
 export function Reserva() {
-  const { id_sesion } = useParams();
   const [sesion, setSesion] = useState([])
   const [sillones, setSillones] = useState([])
   const [recuadrosSillones, setRecuadrosSillones] = useState ([])
+  const navigate = useNavigate()
+  const {id_sesion} = useParams()
 
   useEffect(() => {
+
+    //Solo pueden acceder a esta vista los usuarios autenticados
+    if(!getCookie("token")){
+      return navigate("/login")
+    }
 
     async function cargarSesion() {
       const respuesta = await obtenerSesion(id_sesion);
@@ -36,15 +43,15 @@ export function Reserva() {
           return <div key={sillon} className="sillon" style={{background:"#bc2016"}}></div>
         }
 
-        return <div key={sillon} href="Un lugar" className="sillon"></div>
+        return <a href={"http://localhost:3000/reserva/" + id_sesion + "/" + sillon.id}>
+          <div key={sillon}  className="sillon"></div>
+        </a>
       }
     
     ))
     }
     cargarSesion()
   }, []);
-  
-
 
 
 

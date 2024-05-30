@@ -2,14 +2,41 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { Campo } from "./Campo";
 import { useNavigate } from "react-router-dom";
+import { validarUsername, validarPassword } from './Autenticadores';
 
 export function FormularioLogin(props) {
 
     const [username, setUsername] = useState("");
+    const [usernameError, setUsernameError] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState("");
     const navigate = useNavigate()
 
+
+
     async function login() {
+
+
+
+        //Validamos los datos introducidos por el usuario
+        if (!validarUsername(username)) {
+            setUsernameError("El usuario no es valido")
+            return
+        } else {
+            setUsernameError(" ")
+        }
+
+        if (!validarPassword(password)) {
+            setPasswordError("La contraseña no es valida")
+
+            return
+        } else {
+            setPasswordError("")
+        }
+
+
+
+
 
         //Creamos JSON con el usuario
         let usuario = {
@@ -23,12 +50,17 @@ export function FormularioLogin(props) {
             "http://localhost:8000/autenticacion/api/usuarios/login",
             usuario
         ).then((response) => {
-            document.cookie = "token=" + response.data.token + "; path=/"
-            //Redirigimos a la cartelera
-            navigate("/cartelera")
+
+            if (response.data.token) {
+                document.cookie = "token=" + response.data.token + "; path=/"
+                //Redirigimos a la cartelera
+                navigate("/cartelera")
+            } else {
+                setPasswordError("La contraseña o el usuario no son correctos")
+            }
 
         }).catch(function (error) {
-            console.log(error);
+            setPasswordError("La contraseña o el usuario no son correctos")
         });
 
 
@@ -52,15 +84,23 @@ export function FormularioLogin(props) {
                             name="username"
                             type="text"
                             texto="Nombre de usuario"
-                            onchange={(e) => setUsername(e.target.value)}
+                            onchange={(e) => {
+                                setUsername(e.target.value)
+                                validarUsername(e.target.value)
+                            }}
                         />
+                        <h5 style={{ color: "red" }}>{usernameError}</h5>
 
                         <Campo
                             name="pasword"
                             type="password"
                             texto="Contraseña"
-                            onchange={(e) => setPassword(e.target.value)}
+                            onchange={(e) => {
+                                setPassword(e.target.value)
+                                validarPassword(e.target.value)
+                            }}
                         />
+                        <h5 style={{ color: "red" }}>{passwordError}</h5>
 
                         <input
                             onClick={login}

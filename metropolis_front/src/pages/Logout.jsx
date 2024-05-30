@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import {getCookie} from '../components/autenticacion/getCookie'
+import { useEffect } from 'react'
 
 
 export function Logout() {
@@ -15,12 +16,17 @@ export function Logout() {
         navigate("/cartelera")
     }
 
+
+    useEffect(()=>{
+        logout()
+    },[])
+
+    
+
     
 
     return (
         <>
-        <h1>Has sido desconectado con exito!...</h1>
-        <button style={{color:"blue",padding:"0.2cm"}} onClick={logout}>Volver</button>
         </>
     )
 }

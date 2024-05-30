@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { obtenerPeliculas, obtenerSesionesPeliculas } from '../../api/detallePelicula.api'
 import { Sesion } from './Sesion'
 
+
 export function DetallesPelicula(props) {
 
     const [pelicula, setPelicula] = useState([])
@@ -12,6 +13,7 @@ export function DetallesPelicula(props) {
 
 
     useEffect(() => {
+        
 
         async function cargarPelicula() {
             const respuesta = await obtenerPeliculas(key)
@@ -27,6 +29,8 @@ export function DetallesPelicula(props) {
         cargarSesionesPelicula()
     }, [])
 
+
+    
 
     return (
 

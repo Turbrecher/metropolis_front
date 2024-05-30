@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import { Tarjeta } from './Tarjeta'
-import { obtenerEntradas } from '../../api/entradas.api';
+import { obtenerEntradas } from '../../api/tipoSEntrada.api';
 
 export function Entradas() {
 
