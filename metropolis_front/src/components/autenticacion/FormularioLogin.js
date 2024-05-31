@@ -16,22 +16,20 @@ export function FormularioLogin(props) {
 
     async function login() {
 
+        let errores = false
 
-
-        //Validamos los datos introducidos por el usuario
-        if (!validarUsername(username)) {
-            setUsernameError("El usuario no es valido")
-            return
-        } else {
-            setUsernameError(" ")
+        if(!validarUsername(username)){
+            setUsernameError("Nombre de usuario no válido")
+            errores = true
         }
 
-        if (!validarPassword(password)) {
-            setPasswordError("La contraseña no es valida")
+        if(!validarPassword(password)){
+            setPasswordError("Contraseña no válida")
+            errores = true
+        }
 
+        if(errores){
             return
-        } else {
-            setPasswordError("")
         }
 
 
@@ -86,7 +84,11 @@ export function FormularioLogin(props) {
                             texto="Nombre de usuario"
                             onchange={(e) => {
                                 setUsername(e.target.value)
-                                validarUsername(e.target.value)
+                                if(!validarUsername(username)){
+                                    setUsernameError("Nombre de usuario inválido")
+                                }else{
+                                    setUsernameError("")
+                                }
                             }}
                         />
                         <h5 style={{ color: "red" }}>{usernameError}</h5>
@@ -97,7 +99,11 @@ export function FormularioLogin(props) {
                             texto="Contraseña"
                             onchange={(e) => {
                                 setPassword(e.target.value)
-                                validarPassword(e.target.value)
+                                if (!validarPassword(password)) {
+                                    setPasswordError("Contraseña inválida")
+                                } else {
+                                    setPasswordError("")
+                                }
                             }}
                         />
                         <h5 style={{ color: "red" }}>{passwordError}</h5>

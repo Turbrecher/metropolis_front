@@ -3,13 +3,18 @@ import axios from "axios";
 import { Campo } from "../autenticacion/Campo";
 import { useParams, useNavigate, json } from "react-router-dom";
 import { getCookie } from "../autenticacion/getCookie";
+import {validarNumeroTarjeta, validarCodigoTarjeta, validarNombre, validarFechaExpiración, agregarCero} from "../autenticacion/Autenticadores"
 
 export function FormularioPago(props) {
 
     const [nombre, setNombre] = useState("");
+    const [errorNombre, setErrorNombre] = useState("");
     const [numeroTarjeta, setNumeroTarjeta] = useState("");
+    const [errorNumeroTarjeta, setErrorNumeroTarjeta] = useState("");
     const [fechaExpiracion, setFechaExpiracion] = useState("");
+    const [errorFechaExpiracion, setErrorFechaExpiracion] = useState("");
     const [codigoTarjeta, setCodigoTarjeta] = useState("");
+    const [errorCodigoTarjeta, setErrorCodigoTarjeta] = useState("");
 
     const [usuario, setUsuario] = useState([])
     const [sesion, setSesion] = useState([])
@@ -19,8 +24,35 @@ export function FormularioPago(props) {
     const { id_sesion, id_sillon } = useParams()
     const navigate = useNavigate()
 
-    function checkTarjeta() {
-        return true
+    function tarjetavalidez() {
+        let validez = true
+
+        setErrorNombre("")
+        setErrorNumeroTarjeta("")
+        setErrorFechaExpiracion("")
+        setErrorCodigoTarjeta("")
+
+        if(!validarNombre(nombre)){
+            validez = false
+            setErrorNombre("El nombre no es válido")
+        }
+
+        if(!validarNumeroTarjeta(numeroTarjeta)){
+            validez = false
+            setErrorNumeroTarjeta("El número de la tarjeta no es válido")
+        }
+
+        if(!validarFechaExpiración(fechaExpiracion)){
+            validez = false
+            setErrorFechaExpiracion("La fecha introducida no es válida")
+        }
+
+        if(!validarCodigoTarjeta(codigoTarjeta)){
+            validez = false
+            setErrorCodigoTarjeta("El codigo de la tarjeta introducida no es válido")
+        }
+
+        return validez
     }
 
     let params = {}
@@ -120,8 +152,11 @@ export function FormularioPago(props) {
                 break;
 
             //Entrada fiestas y fines de semana
+            case "Friday":
+            case "Saturday":
+            case "Sunday":
             default:
-                nombreEntrada = "FESTIVO"
+                nombreEntrada = "FESTIVOS"
         }
 
 
@@ -174,15 +209,16 @@ export function FormularioPago(props) {
     //Funcion que se encarga de agregar una nueva entrada en la BD
     async function agregarEntrada() {
         let date = new Date()
-        let fechaCompra = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay()
-
+        let fecha_compra = date.toISOString().split('T')[0]
+        
+        alert(fecha_compra)
 
         //Creamos JSON con el usuario
         let entrada = {
             "usuario": usuario.id,
             "sesion": sesion.id,
             "sillon": sillon.id,
-            "fecha_compra": fechaCompra,
+            "fecha_compra": fecha_compra,
             "tipo_entrada": tipoEntrada.id
 
         };
@@ -209,15 +245,16 @@ export function FormularioPago(props) {
     async function pagar() {
 
         //Si los datos de la tarjeta no son válidos
-        if (!checkTarjeta()) {
+        if (!tarjetavalidez()) {
             return
         }
 
         efectuar_pago()
 
-
         await ocuparSillon()
         await agregarEntrada()
+
+        navigate("/profile")
 
     }
 
@@ -256,6 +293,7 @@ export function FormularioPago(props) {
                             texto="Nombre"
                             onchange={(e) => setNombre(e.target.value)}
                         />
+                        <h5 style={{ color: "red" }}>{errorNombre}</h5>
 
                         <Campo
                             name="numero_tarjeta"
@@ -263,6 +301,7 @@ export function FormularioPago(props) {
                             texto="Número de tarjeta"
                             onchange={(e) => setNumeroTarjeta(e.target.value)}
                         />
+                        <h5 style={{ color: "red" }}>{errorNumeroTarjeta}</h5>
 
                         <Campo
                             name="fecha_expiracion"
@@ -270,6 +309,8 @@ export function FormularioPago(props) {
                             texto="Fecha de expiración"
                             onchange={(e) => setFechaExpiracion(e.target.value)}
                         />
+                        <h5 style={{ color: "red" }}>{errorFechaExpiracion}</h5>
+
 
                         <Campo
                             name="codigo_tarjeta"
@@ -277,6 +318,8 @@ export function FormularioPago(props) {
                             texto="Código"
                             onchange={(e) => setCodigoTarjeta(e.target.value)}
                         />
+                        <h5 style={{ color: "red" }}>{errorCodigoTarjeta}</h5>
+
 
                         <input
                             onClick={pagar}
