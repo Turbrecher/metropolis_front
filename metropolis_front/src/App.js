@@ -12,7 +12,7 @@ import { PoliticaPrivacidad } from "./pages/PoliticaPrivacidad.jsx";
 import { PoliticaCookies } from "./pages/PoliticaCookies.jsx";
 import { Logout } from "./pages/Logout.jsx";
 import { Perfil } from "./pages/Perfil.jsx";
-import {  } from "./pages/Pago.jsx";
+import { ListaAdministrador } from "./pages/ListaAdministrador.jsx";
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
           <Route path="/privacidad" element={<PoliticaPrivacidad />} />
           <Route path="/cookies" element={<PoliticaCookies />} />
           <Route path="/pelicula/:key" element={<InfoPelicula />} />
+          <Route path="/admin/lista" element={<ListaAdministrador />} />
         </Routes>
       </BrowserRouter>
     </>
