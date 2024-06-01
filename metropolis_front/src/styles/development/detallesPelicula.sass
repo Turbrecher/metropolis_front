@@ -37,4 +37,32 @@
                 transition: top ease 0.5s
 
 
+@media screen and ( width > $xs ) and (width < $lg)
+    .detallesPelicula
+        display: grid
+        row-gap: 2rem
+        width: 90%
+        margin: 2rem auto
+        .trailer
+            height: 300px
+            overflow: hidden
+            iframe
+                width: 100%
+                height: 100%
+
+        
+
+        .informacionPelicula
+            grid-template-columns: auto
+            row-gap: 2rem
+            .portada
+                width: 70%
+                margin: 0 auto
+
+        .sesionesPelicula
+            grid-template-columns: auto
+
+    
+
+
                 

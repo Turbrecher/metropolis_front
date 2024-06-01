@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../images/logotipo.png'
 
 export function Footer() {
     return (
@@ -6,7 +7,7 @@ export function Footer() {
         <footer>
 
             <div className="logotipo">
-                <img src="{% static 'images/logotipo.png' %}" alt="" />
+                <img src={logo} alt="" />
             </div>
 
             <div className="enlaces_interes">

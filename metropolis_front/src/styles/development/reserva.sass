@@ -24,7 +24,7 @@
 
     .leyenda
         display: grid
-        grid-template-columns: auto auto auto
+        grid-template-columns: auto auto
         grid-template-rows: auto
         margin: 0 auto
         justify-content: center
@@ -41,3 +41,30 @@
                 height: 50px
                 border-radius: 100%
                 margin: 0 auto
+
+
+@media screen and ( width > $xs  ) and (width < $sm)
+    .reserva
+        width: 80%
+        margin: 5rem auto
+        
+        .sillones
+            grid-template-columns: repeat(10,20px)
+
+            .sillon
+                width: 25px
+                height: 25px
+                background: #20c249aa
+
+@media screen and ( width > $sm  ) and (width < $lg)
+    .reserva
+        width: 80%
+        margin: 5rem auto
+        
+        .sillones
+            grid-template-columns: repeat(10,40px)
+
+            .sillon
+                width: 40px
+                height: 40px
+                background: #20c249aa

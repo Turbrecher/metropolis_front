@@ -37,20 +37,21 @@ header
 
 //Estilos generales del nav
 nav
-    background-color: #204d9c
     background: #051122
     grid-area: nav
     display: flex
     align-items: center
     justify-content: center
     gap: 1cm
+    margin: 0 auto
     padding: 1rem
     position: sticky
-    top: 0
+    overflow: auto
+    top: 0px
     z-index: 1
 
     a
-        border-bottom: solid transparent
+        display: inline
         color: white
         font-size: 20px
         font-weight: normal
@@ -62,11 +63,10 @@ nav
             scale: 110%
             transition: text-shadow ease 0.3s, scale ease 0.3s
 
-
 //Estilos generales del main    
 main
     background: transparent
-    background-image: url('./images/metropolis.png')
+    background-image: url('http://localhost:8000/images/metropolis.png')
     background-repeat: no-repeat
     background-position: center bottom
     background-size: 100%
@@ -118,9 +118,9 @@ footer
                     transition: color ease 0.2s, top ease 0.2s
 
     .logotipo
-            width: 512px
-            img
-                width: 100%
+        width: 512px
+        img
+            width: 100%
 
     //Estilos de las redes sociales.
     .redes_sociales
@@ -150,19 +150,29 @@ footer
                 border-radius: solid 1rem
                 width: 100%
 
-//Estilos especificos de las pantallas grandes (mayores a 992px de ancho)
+//Estilos especificos de las pantallas pequeñas
 @media screen and ( width > $xs  ) and (width <= $sm)
     header
-        
+
         .logotipo
+            width: 50%
+            margin: 0 auto
             margin-top: 1rem
-            width: 300px
+
             img
                 width: 100%
 
     nav
-        overflow: auto
-        justify-content: start
+        position: relative
+        overflow-x: auto
+        white-space: nowrap
+        max-width: 310px
+        justify-content: left
+        a
+            display: inline
+            padding: 1rem
+            
+        
 
     footer
         row-gap: 2rem
@@ -182,7 +192,6 @@ footer
         grid-template-columns: auto auto auto
         width: 100%
 
-
 @media screen and ( width > $sm  ) and (width <= $lg)
 
     header
@@ -192,6 +201,7 @@ footer
                 width: 100%
 
     nav
+        max-width: $lg
         justify-content: center
 
     footer
@@ -204,7 +214,9 @@ footer
         margin: 0 auto
 
     footer .redes_sociales
-        padding: 3rem
+        display: grid
+        grid-template-columns: auto auto auto
+        width: 100%
 
 //Estilos especificos de las pantallas grandes (mayores a 992px de ancho)
 @media screen and ( width > $lg  )

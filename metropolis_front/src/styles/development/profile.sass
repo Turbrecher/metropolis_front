@@ -68,10 +68,21 @@
                         scale: 102%
                         transition: scale ease 0.5s
 
+    .entradas_compradas
+        display: grid 
+        margin: 0 auto
+        gap: 1rem
+        .entrada
+            align-items: start
+            display: grid
+            justify-content: start
+            text-align: left
+            background: #0a1c3a  
+            padding: 1rem
             
 
 
-@media screen and ( width > $xs  )
+@media screen and ( width > $xs  ) and (width < $lg)
     .profile
         margin: 6rem 0
         .titulo
@@ -82,6 +93,19 @@
             width: 80%
             padding: 1rem
             height: fit-content
+
+        .entradas_compradas
+            width: 80%
+            .entrada
+                align-items: start
+                display: flex
+                justify-content: left
+                gap: 2rem
+                .informacion
+                .cartel
+                    width: 20%
+                    img
+                        width: 100%
 
 @media screen and ( width > $lg  )
     .profile
@@ -94,6 +118,20 @@
             width: 40%
             padding: 3rem
             height: fit-content
+
+        .entradas_compradas
+            grid-template-columns: 50% 50%
+            width: 80%
+            .entrada
+                grid-template-columns: auto auto
+                height: 4.5cm
+                overflow: auto
+                gap: 1rem
+                .cartel
+                    width: 100px
+                    img
+                        width: 100%
+
             
                 
                 

@@ -4,6 +4,7 @@ import { getCookie } from "./getCookie";
 import { useNavigate } from "react-router-dom";
 import { Campo } from './Campo';
 import { validarApellidos, validarNombre, validarEmail, validarPasswordPerfil } from './Autenticadores';
+import { Entrada } from './Entrada';
 
 export function InfoPerfil(props) {
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ export function InfoPerfil(props) {
     const [confirm_password, setConfirmPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [id, setId] = useState();
+    const [entradas_compradas, setEntradasCompradas] = useState([])
 
     let params = {}
 
@@ -41,6 +43,22 @@ export function InfoPerfil(props) {
         document.getElementById("email").value = response.data.email
     }
 
+    async function getEntradasUsuario(response) {
+
+        //Hacemos la peticion GET a la API
+        await axios.get(
+            "http://localhost:8000/reserva/api/entradas/?id_usuario=" + response.data.id, params, config
+        ).then((response) => {
+            setEntradasCompradas(response.data)
+            console.log(response.data)
+
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+    }
+
     async function getUserInfo() {
 
         //Hacemos la peticion POST a la API
@@ -48,6 +66,8 @@ export function InfoPerfil(props) {
             "http://localhost:8000/autenticacion/api/usuarios/profile", params, config
         ).then((response) => {
             setData(response)
+
+            getEntradasUsuario(response)
 
 
         }).catch(function (error) {
@@ -133,8 +153,8 @@ export function InfoPerfil(props) {
                         name="first_name"
                         type="text"
                         texto="Nombre"
-                        onchange={(e) => { 
-                            setFirstName(e.target.value) 
+                        onchange={(e) => {
+                            setFirstName(e.target.value)
                             if (!validarNombre(e.target.value)) {
                                 setFirstNameError("Nombre inválido")
                             } else {
@@ -189,9 +209,9 @@ export function InfoPerfil(props) {
                                 setPasswordError("")
                             }
 
-                            if(password !== confirm_password){
+                            if (password !== confirm_password) {
                                 setPasswordError("No son iguales")
-                            }else{
+                            } else {
                                 setPasswordError("")
                             }
 
@@ -212,9 +232,9 @@ export function InfoPerfil(props) {
                                 setPasswordError("")
                             }
 
-                            if(password !== e.target.value){
+                            if (password !== e.target.value) {
                                 setPasswordError("No son iguales")
-                            }else{
+                            } else {
                                 setPasswordError("")
                             }
 
@@ -228,7 +248,29 @@ export function InfoPerfil(props) {
                         type="button"
                         value={"Editar perfil"}
                     />
+
+
                 </form>
+            </div>
+
+
+            <h1 className='titulo'>Tus entradas</h1>
+            <div className='entradas_compradas'>
+
+                {entradas_compradas.map(
+                    (entrada) => (
+                        <Entrada
+                            foto=  {"http://localhost:8000/" + entrada.sesion.pelicula.cartel}
+                            pelicula={entrada.sesion.pelicula.titulo}
+                            hora={entrada.sesion.hora}
+                            fecha_compra={entrada.fecha_compra}
+                            fila={entrada.sillon.fila}
+                            columna={entrada.sillon.columna}
+                            id_entrada = {entrada.id}
+                        />
+                    )
+                )
+                }
             </div>
         </div>
 

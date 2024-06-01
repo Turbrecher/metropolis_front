@@ -23,19 +23,20 @@ header {
       width: 100%; }
 
 nav {
-  background-color: #204d9c;
   background: #051122;
   grid-area: nav;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1cm;
+  margin: 0 auto;
   padding: 1rem;
   position: sticky;
-  top: 0;
+  overflow: auto;
+  top: 0px;
   z-index: 1; }
   nav a {
-    border-bottom: solid transparent;
+    display: inline;
     color: white;
     font-size: 20px;
     font-weight: normal;
@@ -48,7 +49,7 @@ nav {
 
 main {
   background: transparent;
-  background-image: url("./images/metropolis.png");
+  background-image: url("http://localhost:8000/images/metropolis.png");
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: 100%;
@@ -116,14 +117,21 @@ footer {
 
 @media screen and (width > 0px) and (width <= 576px) {
   header .logotipo {
-    margin-top: 1rem;
-    width: 300px; }
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 1rem; }
     header .logotipo img {
       width: 100%; }
 
   nav {
-    overflow: auto;
-    justify-content: start; }
+    position: relative;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 310px;
+    justify-content: left; }
+    nav a {
+      display: inline;
+      padding: 1rem; }
 
   footer {
     row-gap: 2rem; }
@@ -149,6 +157,7 @@ footer {
       width: 100%; }
 
   nav {
+    max-width: "992px";
     justify-content: center; }
 
   footer {
@@ -161,7 +170,9 @@ footer {
     margin: 0 auto; }
 
   footer .redes_sociales {
-    padding: 3rem; } }
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%; } }
 @media screen and (width > 992px) {
   header .logotipo {
     width: 512px; }
@@ -208,18 +219,10 @@ footer {
     margin-bottom: 3rem;
     color: white; }
 
-@media screen and (width > 0px) and (width <= 576px) {
+@media screen and (width > 0px) and (width <= 992px) {
   .cartelera .peliculas {
     grid-template-columns: auto;
     gap: 5rem; }
-    .cartelera .peliculas .pelicula {
-      margin: 0 auto;
-      width: 70%;
-      text-align: center; } }
-@media screen and (width > 576px) and (width <= 992px) {
-  .cartelera .peliculas {
-    grid-template-columns: auto auto;
-    gap: 2rem; }
     .cartelera .peliculas .pelicula {
       margin: 0 auto;
       width: 70%;
@@ -252,7 +255,9 @@ footer {
       width: 100%;
       max-width: 250px; } }
 .precios {
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  width: 80%;
+  margin: 0 auto; }
   .precios .titulo {
     color: white; }
   .precios .tarjetas {
@@ -370,9 +375,9 @@ footer {
     .precios .tarjetas * {
       margin-bottom: 0.33rem; }
     .precios .tarjetas .tarjeta {
-      height: 485px;
+      height: fit-content;
       padding: 1rem;
-      width: 400px; }
+      width: 320px; }
       .precios .tarjetas .tarjeta .precio {
         font-size: 4rem; }
       .precios .tarjetas .tarjeta .img {
@@ -644,6 +649,15 @@ footer {
       font-size: 1.5rem;
       margin-bottom: 2rem; }
 
+@media screen and (width > 0px) and (width < 992px) {
+  .cookies .apartado {
+    margin-bottom: 5rem; }
+    .cookies .apartado .titulo {
+      font-size: 3rem; }
+    .cookies .apartado h5 {
+      font-size: 2.5rem; }
+    .cookies .apartado p {
+      text-align: center; } }
 .privacidad {
   width: 60%;
   margin: 6rem auto; }
@@ -667,6 +681,13 @@ footer {
         text-align: justify;
         font-size: 1.5rem; }
 
+@media screen and (width > 0px) and (width < 992px) {
+  .privacidad .apartado .titulo {
+    font-size: 3rem; }
+  .privacidad .apartado h5 {
+    font-size: 2.5rem; }
+  .privacidad .apartado p {
+    text-align: center; } }
 .detallesPelicula {
   display: grid;
   row-gap: 2rem;
@@ -703,6 +724,26 @@ footer {
         top: -10px;
         transition: top ease 0.5s; }
 
+@media screen and (width > 0px) and (width < 992px) {
+  .detallesPelicula {
+    display: grid;
+    row-gap: 2rem;
+    width: 90%;
+    margin: 2rem auto; }
+    .detallesPelicula .trailer {
+      height: 300px;
+      overflow: hidden; }
+      .detallesPelicula .trailer iframe {
+        width: 100%;
+        height: 100%; }
+    .detallesPelicula .informacionPelicula {
+      grid-template-columns: auto;
+      row-gap: 2rem; }
+      .detallesPelicula .informacionPelicula .portada {
+        width: 70%;
+        margin: 0 auto; }
+    .detallesPelicula .sesionesPelicula {
+      grid-template-columns: auto; } }
 .reserva {
   width: 75%;
   margin: 5rem auto; }
@@ -727,7 +768,7 @@ footer {
       background: #20c249aa; }
   .reserva .leyenda {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     grid-template-rows: auto;
     margin: 0 auto;
     justify-content: center;
@@ -745,6 +786,26 @@ footer {
         border-radius: 100%;
         margin: 0 auto; }
 
+@media screen and (width > 0px) and (width < 576px) {
+  .reserva {
+    width: 80%;
+    margin: 5rem auto; }
+    .reserva .sillones {
+      grid-template-columns: repeat(10, 20px); }
+      .reserva .sillones .sillon {
+        width: 25px;
+        height: 25px;
+        background: #20c249aa; } }
+@media screen and (width > 576px) and (width < 992px) {
+  .reserva {
+    width: 80%;
+    margin: 5rem auto; }
+    .reserva .sillones {
+      grid-template-columns: repeat(10, 40px); }
+      .reserva .sillones .sillon {
+        width: 40px;
+        height: 40px;
+        background: #20c249aa; } }
 .profile {
   display: block; }
   .profile .titulo {
@@ -803,8 +864,19 @@ footer {
         .profile .formulario_profile form .submit:hover {
           scale: 102%;
           transition: scale ease 0.5s; }
+  .profile .entradas_compradas {
+    display: grid;
+    margin: 0 auto;
+    gap: 1rem; }
+    .profile .entradas_compradas .entrada {
+      align-items: start;
+      display: grid;
+      justify-content: start;
+      text-align: left;
+      background: #0a1c3a;
+      padding: 1rem; }
 
-@media screen and (width > 0px) {
+@media screen and (width > 0px) and (width < 992px) {
   .profile {
     margin: 6rem 0; }
     .profile .titulo {
@@ -813,7 +885,18 @@ footer {
     .profile .formulario_profile {
       width: 80%;
       padding: 1rem;
-      height: fit-content; } }
+      height: fit-content; }
+    .profile .entradas_compradas {
+      width: 80%; }
+      .profile .entradas_compradas .entrada {
+        align-items: start;
+        display: flex;
+        justify-content: left;
+        gap: 2rem; }
+        .profile .entradas_compradas .entrada .cartel {
+          width: 20%; }
+          .profile .entradas_compradas .entrada .cartel img {
+            width: 100%; } }
 @media screen and (width > 992px) {
   .profile {
     margin: 6rem 0; }
@@ -823,7 +906,19 @@ footer {
     .profile .formulario_profile {
       width: 40%;
       padding: 3rem;
-      height: fit-content; } }
+      height: fit-content; }
+    .profile .entradas_compradas {
+      grid-template-columns: 50% 50%;
+      width: 80%; }
+      .profile .entradas_compradas .entrada {
+        grid-template-columns: auto auto;
+        height: 4.5cm;
+        overflow: auto;
+        gap: 1rem; }
+        .profile .entradas_compradas .entrada .cartel {
+          width: 100px; }
+          .profile .entradas_compradas .entrada .cartel img {
+            width: 100%; } }
 .pago {
   display: block; }
   .pago .titulo {
