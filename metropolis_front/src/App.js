@@ -12,7 +12,17 @@ import { PoliticaPrivacidad } from "./pages/PoliticaPrivacidad.jsx";
 import { PoliticaCookies } from "./pages/PoliticaCookies.jsx";
 import { Logout } from "./pages/Logout.jsx";
 import { Perfil } from "./pages/Perfil.jsx";
-import { ListaAdministrador } from "./pages/ListaAdministrador.jsx";
+import { ListaAdministrador } from "./pages/admin/ListaAdministrador.jsx";
+import {CrearComidaAdmin} from "./pages/admin/CrearComidaAdmin.jsx"
+import {CrearBebidaAdmin} from "./pages/admin/CrearBebidaAdmin.jsx"
+import {CrearMenuAdmin} from "./pages/admin/CrearMenuAdmin.jsx"
+import {CrearEntradaAdmin} from "./pages/admin/CrearEntradaAdmin.jsx"
+import {CrearSalaAdmin} from "./pages/admin/CrearSalaAdmin.jsx"
+import {CrearSesionAdmin} from "./pages/admin/CrearSesionAdmin.jsx"
+import {CrearPeliculaAdmin} from "./pages/admin/CrearPeliculaAdmin.jsx"
+import {CrearSillonAdmin} from "./pages/admin/CrearSillonAdmin.jsx"
+import {CrearTipoEntradaAdmin} from "./pages/admin/CrearTipoEntradaAdmin.jsx"
+import {CrearUsuarioAdmin} from "./pages/admin/CrearUsuarioAdmin.jsx"
 
 function App() {
   return (
@@ -35,6 +45,16 @@ function App() {
           <Route path="/cookies" element={<PoliticaCookies />} />
           <Route path="/pelicula/:key" element={<InfoPelicula />} />
           <Route path="/admin/lista" element={<ListaAdministrador />} />
+          <Route path="/admin/create/bebida" element={<CrearBebidaAdmin />} />
+          <Route path="/admin/create/comida" element={<CrearComidaAdmin />} />
+          <Route path="/admin/create/menu" element={<CrearMenuAdmin />} />
+          <Route path="/admin/create/entrada" element={<CrearEntradaAdmin />} />
+          <Route path="/admin/create/sala" element={<CrearSalaAdmin />} />
+          <Route path="/admin/create/sesion" element={<CrearSesionAdmin />} />
+          <Route path="/admin/create/sillon" element={<CrearSillonAdmin />} />
+          <Route path="/admin/create/pelicula" element={<CrearPeliculaAdmin />} />
+          <Route path="/admin/create/tipoentrada" element={<CrearTipoEntradaAdmin />} />
+          <Route path="/admin/create/usuario" element={<CrearUsuarioAdmin />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -10,9 +10,7 @@ export function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (getCookie !== "") {
-      navigate("/cartelera");
-    }
+
   }, []);
 
   return (
