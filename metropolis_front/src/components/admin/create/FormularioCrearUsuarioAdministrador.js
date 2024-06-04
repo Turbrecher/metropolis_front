@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import axios from "axios";
-import { Campo } from "./Campo";
+import { Campo } from "../../autenticacion/Campo";
 import { useNavigate } from "react-router-dom";
-import { validarApellidos, validarNombre, validarPassword, validarUsername, validarEmail } from './Autenticadores';
+import { validarApellidos, validarNombre, validarPassword, validarUsername, validarEmail } from '../../autenticacion/Autenticadores';
 
-export function FormularioRegistro(props) {
+export function FormularioCrearUsuarioAdministrador(props) {
 
     const [username, setUsername] = useState("");
     const [usernameError, setUsernameError] = useState("");
@@ -16,7 +16,8 @@ export function FormularioRegistro(props) {
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const navigate = useNavigate()
+    const [is_superuser, setIsSuperUser] = useState(false);
+
 
     async function register() {
         let errores = false
@@ -57,24 +58,28 @@ export function FormularioRegistro(props) {
             "first_name": first_name,
             "last_name": last_name,
             "email": email,
+            "is_superuser":is_superuser
         };
 
         await axios.post(
-            "http://localhost:8000/autenticacion/api/usuarios/register",
+            "http://localhost:8000/autenticacion/api/usuarios/create",
             usuario
-        );
-
-
-        navigate("/login")
+        ).then((response)=>{
+            alert("El usuario " + username + " se creó correctamente")
+            console.log(response.data)
+        }).catch((error)=>{
+            alert("Ha ocurrido un error")
+            console.log(error)
+        });
 
     }
 
 
     return (
 
-        <div className="register">
-            <div className="formulario_register">
-                <h1 className="titulo">REGISTRARSE</h1>
+        <div className="admin">
+            <div className="formulario_admin">
+                <h1 className="titulo">CREAR USUARIO</h1>
 
                 <form>
                     <Campo
@@ -83,7 +88,7 @@ export function FormularioRegistro(props) {
                         texto="Nombre de usuario"
                         onchange={(e) => {
                             setUsername(e.target.value)
-                            if(!validarUsername(e.target.value)){
+                            if(!validarUsername(username)){
                                 setUsernameError("Nombre de usuario inválido")
                             }else{
                                 setUsernameError("")
@@ -161,18 +166,22 @@ export function FormularioRegistro(props) {
                     />
                     <h5 style={{ color: "red" }}>{passwordError}</h5>
 
+                    <label>Es administrador</label>
+                    <select
+                    onChange={(e)=>{
+                        setIsSuperUser(e.target.value)
+                    }}>
+                        <option value={false}>No</option>
+                        <option value={true}>Sí</option>
+                    </select>
+
                     <input
                         onClick={register}
                         className="submit"
                         type="button"
-                        value={"Registrarse"}
+                        value={"Crear Usuario"}
                     />
                 </form>
-
-                <h4>¿Ya tienes una cuenta?</h4>
-                <h4>
-                    <a href="/login">Inicia Sesion</a>
-                </h4>
             </div>
         </div>
 

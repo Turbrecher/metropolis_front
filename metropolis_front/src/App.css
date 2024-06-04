@@ -1001,6 +1001,18 @@ footer {
 .listadoApi {
   padding-top: 2rem;
   display: grid; }
+  .listadoApi .botonCrear {
+    border: solid transparent;
+    background: #0068c8;
+    color: white;
+    padding: 1rem;
+    transition: scale ease 0.5s;
+    width: fit-content;
+    margin: 2rem auto;
+    text-decoration: none; }
+    .listadoApi .botonCrear:hover {
+      scale: 120%;
+      transition: scale ease 0.5s; }
   .listadoApi .titulo {
     margin-top: 2rem;
     text-align: center;
@@ -1073,7 +1085,7 @@ footer {
       margin-bottom: 1rem; }
       .admin .formulario_admin form label {
         color: white; }
-      .admin .formulario_admin form input[type=text], .admin .formulario_admin form input[type=password], .admin .formulario_admin form input[type=date], .admin .formulario_admin form select {
+      .admin .formulario_admin form input[type=text], .admin .formulario_admin form input[type=password], .admin .formulario_admin form input[type=date], .admin .formulario_admin form input[type=time], .admin .formulario_admin form select, .admin .formulario_admin form textarea {
         border: solid transparent 1px;
         border-bottom: solid #2d3141 1px;
         background: transparent;
@@ -1081,13 +1093,13 @@ footer {
         color-scheme: dark;
         transition: border-color ease 0.5s;
         padding: 0.5rem; }
-        .admin .formulario_admin form input[type=text]:hover, .admin .formulario_admin form input[type=password]:hover, .admin .formulario_admin form input[type=date]:hover, .admin .formulario_admin form select:hover {
+        .admin .formulario_admin form input[type=text]:hover, .admin .formulario_admin form input[type=password]:hover, .admin .formulario_admin form input[type=date]:hover, .admin .formulario_admin form input[type=time]:hover, .admin .formulario_admin form select:hover, .admin .formulario_admin form textarea:hover {
           border-bottom: solid white 1px;
           transition: border-color ease 0.5s; }
-        .admin .formulario_admin form input[type=text]:focus, .admin .formulario_admin form input[type=password]:focus, .admin .formulario_admin form input[type=date]:focus, .admin .formulario_admin form select:focus {
+        .admin .formulario_admin form input[type=text]:focus, .admin .formulario_admin form input[type=password]:focus, .admin .formulario_admin form input[type=date]:focus, .admin .formulario_admin form input[type=time]:focus, .admin .formulario_admin form select:focus, .admin .formulario_admin form textarea:focus {
           outline: none;
           color: white; }
-        .admin .formulario_admin form input[type=text] *, .admin .formulario_admin form input[type=password] *, .admin .formulario_admin form input[type=date] *, .admin .formulario_admin form select * {
+        .admin .formulario_admin form input[type=text] *, .admin .formulario_admin form input[type=password] *, .admin .formulario_admin form input[type=date] *, .admin .formulario_admin form input[type=time] *, .admin .formulario_admin form select *, .admin .formulario_admin form textarea * {
           margin-bottom: 1rem; }
       .admin .formulario_admin form .submit {
         border: solid transparent;

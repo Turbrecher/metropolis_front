@@ -2,97 +2,66 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { Campo } from "../../autenticacion/Campo";
 import { useNavigate } from "react-router-dom";
-import { validarDescripcion, validarFoto, validarNombre, validarPrecio } from '../../autenticacion/Autenticadores';
+import { validarHora } from '../../autenticacion/Autenticadores';
 
-export function FormularioCrearEntrada(props) {
+export function FormularioCrearSesion(props) {
 
-    const [usuario, setUsuario] = useState("");
-    const [sesion, setSesion] = useState("");
-    const [sillon, setSillon] = useState("")
-    const [tipo_entrada, setTipoEntrada] = useState("")
-    const [fecha_compra, setFechaCompra] = useState()
+    const [pelicula, setPelicula] = useState("");
+    const [sala, setSala] = useState("");
+    const [hora, setHora] = useState("")
+    const [errorHora, setErrorHora] = useState("")
 
-    const [usuarios, setUsuarios] = useState([])
-    const [sesiones, setSesiones] = useState([])
-    const [sillones, setSillones] = useState([])
-    const [tipos_entrada, setTiposEntrada] = useState([])
+    const [peliculas, setPeliculas] = useState([])
+    const [salas, setSalas] = useState([])
 
 
     const navigate = useNavigate()
 
 
-    async function getUsuarios() {
-        axios.get("http://localhost:8000/autenticacion/api/usuarios/").
+    async function getPeliculas() {
+        axios.get("http://localhost:8000/cartelera/api/peliculas/").
             then((response) => {
                 console.log(response.data)
-                setUsuarios(response.data)
+                setPeliculas(response.data)
             }).
             catch((error) => {
                 console.log(error)
             })
     }
 
-    async function getSesiones() {
-        axios.get("http://localhost:8000/reserva/api/sesiones/").
+    async function getSalas() {
+        axios.get("http://localhost:8000/reserva/api/salas/").
             then((response) => {
                 console.log(response.data)
-                setSesiones(response.data)
+                setSalas(response.data)
             }).
             catch((error) => {
                 console.log(error)
             })
     }
 
-    async function getSillones() {
-        axios.get("http://localhost:8000/reserva/api/sillones/").
-            then((response) => {
-                console.log(response.data)
-                setSillones(response.data)
-            }).
-            catch((error) => {
-                console.log(error)
-            })
-    }
-
-    async function getTiposEntrada() {
-        axios.get("http://localhost:8000/compra/api/tiposentrada/").
-            then((response) => {
-                console.log(response.data)
-                setTiposEntrada(response.data)
-            }).
-            catch((error) => {
-                console.log(error)
-            })
-    }
 
     useEffect(() => {
 
-        let date = new Date()
-        setFechaCompra(date.toISOString().split('T')[0])
-
-        getUsuarios()
-        getSesiones()
-        getSillones()
-        getTiposEntrada()
+        getPeliculas()
+        getSalas()
     }, [])
 
     async function create() {
 
         let errores = false
 
-        if (usuario === "") {
+        if (pelicula === "") {
             errores = true
         }
 
-        if (sesion === "") {
+        if (sala === "") {
             errores = true
         }
+        alert(hora)
 
-        if (sillon === "") {
-            errores = true
-        }
-
-        if (tipo_entrada === "") {
+        if (!validarHora(hora)) {
+            setErrorHora("La hora no es válida")
             errores = true
         }
 
@@ -102,22 +71,21 @@ export function FormularioCrearEntrada(props) {
         }
 
         //Creamos JSON con el usuario
-        let entrada = {
-            "usuario": usuario,
-            "sesion": sesion,
-            "sillon": sillon,
-            "tipo_entrada": tipo_entrada,
-            "fecha_compra": fecha_compra
+        let sesion = {
+            "pelicula": pelicula,
+            "sala": sala,
+            "sillones_ocupados": [ ],
+            "hora": hora,
         };
 
 
         //Hacemos la peticion POST a la API
         await axios.post(
-            "http://localhost:8000/reserva/api/entradas/",
-            entrada
+            "http://localhost:8000/reserva/api/sesiones/",
+            sesion
         ).then((response) => {
 
-            alert("La entrada con id: " + response.data.id + " ha sido creada!")
+            alert("La sesion con id: " + response.data.id + " ha sido creada!")
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
@@ -137,52 +105,40 @@ export function FormularioCrearEntrada(props) {
             <div className="admin">
 
                 <div className="formulario_admin">
-                    <h1 className="titulo">CREACIÓN DE ENTRADA</h1>
+                    <h1 className="titulo">CREACIÓN DE SESIÓN</h1>
 
                     <form action="" encType='multipart/form-data'>
 
-
-
                         <label>Pelicula</label>
                         <select onChange={(e) => {
-                            setUsuario(e.target.value)
+                            setPelicula(e.target.value)
                         }}>
-                            <option>Elija un usuario</option>
-                            {usuarios.map((usuario) => (
-                                <option key={usuario.id} value={usuario.id}>{usuario.username}</option>
+                            <option>Elija una pelicula</option>
+                            {peliculas.map((pelicula) => (
+                                <option key={pelicula.id} value={pelicula.id}>{pelicula.titulo}</option>
                             ))}
                         </select>
 
 
-                        <label>Sesion</label>
+                        <label>Sala</label>
                         <select onChange={(e) => {
-                            setSesion(e.target.value)
+                            setSala(e.target.value)
                         }}>
-                            <option>Elija una sesion</option>
-                            {sesiones.map((sesion) => (
-                                <option key={sesion.id} value={sesion.id}>{sesion.pelicula.titulo} // {sesion.hora} // {sesion.sala.nombre}</option>
+                            <option>Elija una sala</option>
+                            {salas.map((sala) => (
+                                <option key={sala.id} value={sala.id}>{sala.nombre}</option>
                             ))}
                         </select>
 
-                        <label>Sillon</label>
-                        <select onChange={(e) => {
-                            setSillon(e.target.value)
-                        }}>
-                            <option>Elija un sillon</option>
-                            {sillones.map((sillon) => (
-                                <option key={sillon.id} value={sillon.id}>Fila {sillon.fila} // Columna {sillon.columna}</option>
-                            ))}
-                        </select>
-
-                        <label>Tipo de Entrada</label>
-                        <select onChange={(e) => {
-                            setTipoEntrada(e.target.value)
-                        }}>
-                            <option>Elija una entrada</option>
-                            {tipos_entrada.map((tipo_entrada) => (
-                                <option key={tipo_entrada.id} value={tipo_entrada.id}>{tipo_entrada.nombre} // {tipo_entrada.precio}</option>
-                            ))}
-                        </select>
+                        <Campo
+                            type="time"
+                            name="Hora"
+                            texto="Hora"
+                            onchange={(e)=>{
+                                setHora(e.target.value)
+                            }}
+                        />
+                        <h5 style={{ color: "red" }}>{errorHora}</h5>
 
 
                         <input

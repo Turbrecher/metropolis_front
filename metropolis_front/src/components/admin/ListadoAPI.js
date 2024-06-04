@@ -8,8 +8,8 @@ export function ListadoAPI(props) {
     const navigate = useNavigate()
     const [objetosJSON, setObjetosJSOn] = useState([])
     const [url, setUrl] = useState("")
+    const [titulo, setTitulo] = useState("")
     const [tipoDato, setTipoDato] = useState("")
-    const [idBorrado, setIdBorrado] = useState("")
 
     useEffect(() => {
         changeTitle()
@@ -21,47 +21,57 @@ export function ListadoAPI(props) {
         //Elegimos el contenido del titulo dependiendo del valor de la url
         switch (url) {
             case "http://localhost:8000/autenticacion/api/usuarios/":
-                setTipoDato("LISTA DE USUARIOS")
+                setTitulo("LISTA DE USUARIOS")
+                setTipoDato("usuario")
                 break
 
             case "http://localhost:8000/cartelera/api/peliculas/":
-                setTipoDato("LISTA DE PELICULAS")
+                setTitulo("LISTA DE PELICULAS")
+                setTipoDato("pelicula")
                 break
 
             case "http://localhost:8000/reserva/api/sesiones/":
-                setTipoDato("LISTA DE SESIONES")
+                setTitulo("LISTA DE SESIONES")
+                setTipoDato("sesión")
                 break
 
             case "http://localhost:8000/reserva/api/entradas/":
-                setTipoDato("LISTA DE ENTRADAS")
+                setTitulo("LISTA DE ENTRADAS")
+                setTipoDato("entrada")
                 break
 
             case "http://localhost:8000/reserva/api/salas/":
-                setTipoDato("LISTA DE SALAS")
+                setTitulo("LISTA DE SALAS")
+                setTipoDato("sala")
                 break
 
             case "http://localhost:8000/reserva/api/sillones/":
-                setTipoDato("LISTA DE SILLONES")
+                setTitulo("LISTA DE SILLONES")
+                setTipoDato("sillón")
                 break
 
             case "http://localhost:8000/compra/api/comidas/":
-                setTipoDato("LISTA DE COMIDAS")
+                setTitulo("LISTA DE COMIDAS")
+                setTipoDato("comida")
                 break
 
             case "http://localhost:8000/compra/api/bebidas/":
-                setTipoDato("LISTA DE BEBIDAS")
+                setTitulo("LISTA DE BEBIDAS")
+                setTipoDato("bebida")
                 break
 
             case "http://localhost:8000/compra/api/menus/":
-                setTipoDato("LISTA DE MENUS")
+                setTitulo("LISTA DE MENUS")
+                setTipoDato("menu")
                 break
 
             case "http://localhost:8000/compra/api/tiposentrada/":
-                setTipoDato("LISTA DE ENTRADAS")
+                setTitulo("LISTA DE TIPOS DE ENTRADA")
+                setTipoDato("tipoentrada")
                 break
 
             default:
-                setTipoDato("PARA VER DATOS, ELIJA EN EL MENU")
+                setTitulo("PARA VER DATOS, ELIJA EN EL MENU")
                 break
         }
     }
@@ -299,6 +309,14 @@ export function ListadoAPI(props) {
 
     }
 
+    function agregarBoton() {
+        if (tipoDato !== "") {
+            return <a target='_blank' className='botonCrear' href={"/admin/create/" + tipoDato}>
+                Crear {tipoDato}
+            </a>
+        }
+    }
+
 
 
 
@@ -354,7 +372,8 @@ export function ListadoAPI(props) {
 
             </select>
 
-            <h1 className='titulo'>{tipoDato}</h1>
+            <h1 className='titulo'>{titulo}</h1>
+            {agregarBoton()}
 
             <div className='lista'>
                 {createList()}

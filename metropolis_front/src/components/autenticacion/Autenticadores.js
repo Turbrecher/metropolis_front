@@ -147,3 +147,63 @@ export function validarPrecio(precio){
         return true
     }
 }
+
+export function validarHora(hora){
+    const regex = /^[0-9]{2}:[0-9]{2}/
+
+    if (!regex.test(hora)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}
+
+export function validarDuracion(duracion){
+    const regex = /^[0-9]{1,3}$/
+
+    if (!regex.test(duracion)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}
+
+export function validarPegi(pegi){
+    const regex = /((^\+[0-9]{1,2}$)|^todos los publicos$)/
+
+    if (!regex.test(pegi)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}
+
+export function validarFilaColumna(fila_columna){
+    const regex = /(^[0-9]{1,2}$)/
+
+    if (!regex.test(fila_columna)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}
+
+export function validarAforo(aforo){
+    const regex = /(^[0-9]{2,3}$)/
+
+    if (!regex.test(aforo)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}
