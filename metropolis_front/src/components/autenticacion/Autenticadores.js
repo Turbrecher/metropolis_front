@@ -110,3 +110,40 @@ export function validarFechaExpiración(fechaExpiracion){
         return true
     }
 }
+
+export function validarDescripcion(descripcion){
+    const regex = /[A-Za-z0-9]{5,250}/
+
+    if (!regex.test(descripcion)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}
+
+
+export function validarFoto(foto){
+    const regex = /(image\/jpeg|image\/jpg|image\/png)/
+
+    if (!regex.test(foto)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}
+
+export function validarPrecio(precio){
+    const regex = /(^[0-9]{1,3}$)|^([0-9]{1,3}[.]{1}[0-9]{1,2}$)/
+
+    if (!regex.test(precio)) {
+
+        return false
+    } else {
+
+        return true
+    }
+}

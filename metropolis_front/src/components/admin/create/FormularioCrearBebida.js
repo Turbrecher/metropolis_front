@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { Campo } from "../../autenticacion/Campo";
 import { useNavigate } from "react-router-dom";
-import { validarUsername, validarPassword, validarNombre } from '../../autenticacion/Autenticadores';
+import { validarDescripcion, validarFoto, validarNombre, validarPrecio } from '../../autenticacion/Autenticadores';
 
 export function FormularioCrearBebida(props) {
 
@@ -16,11 +16,6 @@ export function FormularioCrearBebida(props) {
     const [precioError, setPrecioError] = useState("")
 
 
-    const [password, setPassword] = useState("")
-    const [passwordError, setPasswordError] = useState("")
-    const [username, setUsername] = useState("")
-    const [usernameError, setUsernameError] = useState("")
-
     const navigate = useNavigate()
 
 
@@ -29,20 +24,29 @@ export function FormularioCrearBebida(props) {
 
         let errores = false
 
-        if(!validarNombre(username)){
-            setUsernameError("Nombre de usuario no válido")
+        if (!validarNombre(nombre)) {
+            setNombreError("Nombre no válido")
             errores = true
         }
 
-        
-
-        if(errores){
-            return
+        if (!validarDescripcion(descripcion)) {
+            setDescripcionError("Descripción no válida")
+            errores = true
         }
 
+        if (!validarFoto(foto.type)) {
+            setFotoError("Foto no válida")
+            errores = true
+        }
 
+        if (!validarPrecio(precio)) {
+            setPrecioError("Precio no válido")
+            errores = true
+        }
 
-
+        if (errores) {
+            return
+        }
 
         //Creamos JSON con el usuario
         let bebida = {
@@ -56,13 +60,19 @@ export function FormularioCrearBebida(props) {
         //Hacemos la peticion POST a la API
         await axios.post(
             "http://localhost:8000/compra/api/bebidas/",
-            bebida
+            bebida,
+            {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            }
         ).then((response) => {
 
             alert("La bebida con nombre: " + response.data.nombre + " ha sido creada!")
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
+            console.log(error)
         });
 
 
@@ -80,37 +90,69 @@ export function FormularioCrearBebida(props) {
                 <div className="formulario_admin">
                     <h1 className="titulo">CREACIÓN DE BEBIDA</h1>
 
-                    <form action="">
+                    <form action="" encType='multipart/form-data'>
 
                         <Campo
-                            name="username"
+                            name="nombre"
                             type="text"
-                            texto="Nombre de usuario"
+                            texto="Nombre"
                             onchange={(e) => {
-                                setUsername(e.target.value)
-                                if(!validarUsername(username)){
-                                    setUsernameError("Nombre de usuario inválido")
-                                }else{
-                                    setUsernameError("")
+                                setNombre(e.target.value)
+                                if (!validarNombre(e.target.value)) {
+                                    setNombreError("Nombre inválido")
+                                } else {
+                                    setNombreError("")
                                 }
                             }}
                         />
-                        <h5 style={{ color: "red" }}>{usernameError}</h5>
+                        <h5 style={{ color: "red" }}>{nombreError}</h5>
 
                         <Campo
-                            name="pasword"
-                            type="password"
-                            texto="Contraseña"
+                            name="descripcion"
+                            type="text"
+                            texto="Descripción"
                             onchange={(e) => {
-                                setPassword(e.target.value)
-                                if (!validarPassword(password)) {
-                                    setPasswordError("Contraseña inválida")
+                                setDescripcion(e.target.value)
+                                if (!validarDescripcion(e.target.value)) {
+                                    setDescripcionError("Descripción inválida")
                                 } else {
-                                    setPasswordError("")
+                                    setDescripcionError("")
                                 }
                             }}
                         />
-                        <h5 style={{ color: "red" }}>{passwordError}</h5>
+                        <h5 style={{ color: "red" }}>{descripcionError}</h5>
+
+                        <Campo
+                            name="foto"
+                            type="file"
+                            texto="Foto"
+                            onchange={(e) => {
+                                setFoto(e.target.files[0])
+                                console.log(e.target.files[0])
+                                if (!validarFoto(e.target.files[0].type)) {
+                                    setFotoError("Foto inválida")
+                                } else {
+                                    setFotoError("")
+                                }
+                            }}
+                        />
+                        <h5 style={{ color: "red" }}>{fotoError}</h5>
+
+
+                        <Campo
+                            name="precio"
+                            type="text"
+                            texto="Precio"
+                            onchange={(e) => {
+                                setPrecio(e.target.value)
+                                if (!validarPrecio(e.target.value)) {
+                                    setPrecioError("Precio inválido")
+                                } else {
+                                    setPrecioError("")
+                                }
+                            }}
+                        />
+                        <h5 style={{ color: "red" }}>{precioError}</h5>
 
                         <input
                             onClick={create}
