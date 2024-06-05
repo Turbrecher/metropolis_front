@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { Campo } from "../../autenticacion/Campo";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { validarDescripcion, validarFoto, validarNombre, validarDuracion, validarPegi, validarFechaExpiración } from '../../autenticacion/Autenticadores';
 
-export function FormularioCrearPelicula(props) {
+export function FormularioEditarPelicula(props) {
 
     const [titulo, setTitulo] = useState("");
     const [tituloError, setTituloError] = useState("");
@@ -36,12 +36,37 @@ export function FormularioCrearPelicula(props) {
     const [fecha_lanzamiento, setFechaLanzamiento] = useState("")
     const [fecha_lanzamiento_error, setFechaLanzamientoError] = useState("")
 
+    const [peliculaSeleccionada, setPeliculaSeleccionada] = useState("")
+
 
     const navigate = useNavigate()
+    const { key } = useParams()
 
+    useEffect(()=>{
+        getPeliculaSeleccionadas()
+    },[])
 
+    async function getPeliculaSeleccionadas() {
+        axios.get("http://localhost:8000/cartelera/api/peliculas/" + key).
+            then((response) => {
+                setPeliculaSeleccionada(response.data)
+                setTitulo(response.data.titulo)
+                setSinopsis(response.data.sinopsis)
+                setGenero(response.data.genero)
+                setPegi(response.data.pegi)
+                setActores(response.data.actores)
+                setDuracion(response.data.duracion)
+                setUrlTrailer(response.data.url_trailer)
+                setFechaLanzamiento(response.data.fecha_lanzamiento)
+                setDirector(response.data.director)
+                setCartel(response.data.cartel)
+            }).
+            catch((error) => {
+                console.log(error)
+            })
+    }
 
-    async function create() {
+    async function edit() {
 
         let errores = false
 
@@ -60,11 +85,6 @@ export function FormularioCrearPelicula(props) {
             errores = true
         }
 
-        if (!validarFoto(cartel.type)) {
-            setCartelError("Cartel no válido")
-            errores = true
-        }
-
         if (!validarDescripcion(actores)) {
             setActoresError("Actores no válidos")
             errores = true
@@ -75,29 +95,27 @@ export function FormularioCrearPelicula(props) {
             errores = true
         }
 
-        if(!validarPegi(pegi)){
+        if (!validarPegi(pegi)) {
             setPegiError("PEGI no válido")
             errores = true
         }
 
-        if(!validarNombre(genero)){
+        if (!validarNombre(genero)) {
             setGeneroError("Género/s no válido")
             errores = true
         }
 
-        if(!validarDuracion(duracion)){
+        if (!validarDuracion(duracion)) {
             setDuracionError("Duración no válida")
             errores = true
         }
 
-        if(!validarFechaExpiración(fecha_lanzamiento)){
+        if (!validarFechaExpiración(fecha_lanzamiento)) {
             setFechaLanzamientoError("Fecha no válida")
             errores = true
         }
 
-        if (errores) {
-            return
-        }
+        
 
         //Creamos JSON con el usuario
         let pelicula = {
@@ -113,10 +131,19 @@ export function FormularioCrearPelicula(props) {
             "actores": actores,
         };
 
+        if (!validarFoto(cartel.type)) {
+            setCartelError("Cartel no válido")
+            errores = true
+        }
+
+        if (errores) {
+            return
+        }
+
 
         //Hacemos la peticion POST a la API
-        await axios.post(
-            "http://localhost:8000/cartelera/api/peliculas/",
+        await axios.put(
+            "http://localhost:8000/cartelera/api/peliculas/" + key + "/",
             pelicula,
             {
                 headers: {
@@ -125,7 +152,7 @@ export function FormularioCrearPelicula(props) {
             }
         ).then((response) => {
 
-            alert("La pelicula con titulo: " + response.data.titulo + " ha sido creada!")
+            alert("La pelicula con titulo: " + response.data.titulo + " ha sido editada!")
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
@@ -145,7 +172,7 @@ export function FormularioCrearPelicula(props) {
             <div className="admin">
 
                 <div className="formulario_admin">
-                    <h1 className="titulo">CREACIÓN DE PELÍCULA</h1>
+                    <h1 className="titulo">EDICIÓN DE PELÍCULA</h1>
 
                     <form action="" encType='multipart/form-data'>
 
@@ -153,6 +180,7 @@ export function FormularioCrearPelicula(props) {
                             name="titulo"
                             type="text"
                             texto="Título"
+                            value={titulo}
                             onchange={(e) => {
                                 setTitulo(e.target.value)
                                 if (!validarNombre(e.target.value)) {
@@ -168,6 +196,7 @@ export function FormularioCrearPelicula(props) {
                             name="director"
                             type="text"
                             texto="Director"
+                            value={director}
                             onchange={(e) => {
                                 setDirector(e.target.value)
                                 if (!validarNombre(e.target.value)) {
@@ -183,6 +212,7 @@ export function FormularioCrearPelicula(props) {
                             name="genero"
                             type="text"
                             texto="Género/s"
+                            value={genero}
                             onchange={(e) => {
                                 setGenero(e.target.value)
                                 if (!validarNombre(e.target.value)) {
@@ -198,6 +228,7 @@ export function FormularioCrearPelicula(props) {
                             name="pegi"
                             type="text"
                             texto="Pegi"
+                            value={pegi}
                             onchange={(e) => {
                                 setPegi(e.target.value)
                                 if (!validarPegi(e.target.value)) {
@@ -213,6 +244,7 @@ export function FormularioCrearPelicula(props) {
                             name="duracion"
                             type="text"
                             texto="Duración en minutos"
+                            value={duracion}
                             onchange={(e) => {
                                 setDuracion(e.target.value)
                                 if (!validarDuracion(e.target.value)) {
@@ -228,6 +260,7 @@ export function FormularioCrearPelicula(props) {
                             name="actores"
                             type="text"
                             texto="Actores"
+                            value={actores}
                             onchange={(e) => {
                                 setActores(e.target.value)
                                 if (!validarNombre(e.target.value)) {
@@ -243,6 +276,7 @@ export function FormularioCrearPelicula(props) {
                             name="url_trailer"
                             type="text"
                             texto="URL Trailer"
+                            value={url_trailer}
                             onchange={(e) => {
                                 setUrlTrailer(e.target.value)
                                 if (!validarDescripcion(e.target.value)) {
@@ -254,10 +288,10 @@ export function FormularioCrearPelicula(props) {
                         />
                         <h5 style={{ color: "red" }}>{url_trailer_error}</h5>
 
-                        
+
 
                         <label>Sinopsis</label>
-                        <textarea rows={5} onChange={(e) => {
+                        <textarea value={sinopsis} rows={5} onChange={(e) => {
                             setSinopsis(e.target.value)
                             if (!validarDescripcion(e.target.value)) {
                                 setSinopsisError("Sinopsis inválida")
@@ -286,6 +320,7 @@ export function FormularioCrearPelicula(props) {
                             name="fecha_lanzamiento"
                             type="date"
                             texto="Fecha de estreno"
+                            value={fecha_lanzamiento}
                             onchange={(e) => {
                                 setFechaLanzamiento(e.target.value)
                                 if (!validarFechaExpiración(e.target.value)) {
@@ -298,13 +333,13 @@ export function FormularioCrearPelicula(props) {
                         <h5 style={{ color: "red" }}>{fecha_lanzamiento_error}</h5>
 
                         <input
-                            onClick={create}
+                            onClick={edit}
                             className="submit"
                             type="button"
-                            value={"Crear película"}
+                            value={"Editar película"}
                         />
 
-                        
+
 
                     </form>
 

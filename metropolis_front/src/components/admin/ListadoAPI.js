@@ -132,13 +132,17 @@ export function ListadoAPI(props) {
                             <h2>Nombre: {usuario.first_name}</h2>
                             <h2>Apellidos: {usuario.last_name}</h2>
                             <h2>Email: {usuario.email}</h2>
+
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/usuario/' + usuario.id}>
+                                    <h2 className='botonEditar'>Editar Usuario</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(usuario.id)
                                 }
-
-
                                 }>Borrar Usuario</h2>
+                                
 
                         </div>
 
@@ -151,12 +155,15 @@ export function ListadoAPI(props) {
                         <div key={pelicula.id} style={{ opacity: "100%" }}>
                             <img src={pelicula.cartel}></img>
                             <h2>Titulo: {pelicula.titulo}</h2>
-                            <h2>Sinopsis: {pelicula.sinopsis}</h2>
                             <h2>Genero: {pelicula.genero}</h2>
                             <h2>PEGI: {pelicula.pegi}</h2>
-                            <h2>URL trailer: {pelicula.url_trailer}</h2>
                             <h2>Fecha de estreno: {pelicula.fecha_lanzamiento}</h2>
                             <h2>Duracion: {pelicula.duracion} minutos</h2>
+
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/pelicula/' + pelicula.id}>
+                                    <h2 className='botonEditar'>Editar Película</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(pelicula.id)
@@ -174,6 +181,10 @@ export function ListadoAPI(props) {
                             <h2>Pelicula: {sesion.pelicula.titulo}</h2>
                             <h2>Hora: {sesion.hora}</h2>
                             <h2>Sala: {sesion.sala.nombre}</h2>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/sesion/' + sesion.id}>
+                                    <h2 className='botonEditar'>Editar Sesión</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(sesion.id)
@@ -193,6 +204,10 @@ export function ListadoAPI(props) {
                             <h2>Sillon: Fila {entrada.sillon.fila}, Columna {entrada.sillon.columna}</h2>
                             <h2>Tipo de entrada: {entrada.tipo_entrada.nombre}</h2>
                             <h2>Precio pagado: {entrada.tipo_entrada.precio}</h2>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/entrada/' + entrada.id}>
+                                    <h2 className='botonEditar'>Editar Entrada</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(entrada.id)
@@ -209,6 +224,10 @@ export function ListadoAPI(props) {
                             <h2>Nombre: {sala.nombre}</h2>
                             <h2>Aforo: {sala.aforo}</h2>
                             <h2>Sillones: {sala.sillones.length}</h2>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/sala/' + sala.id}>
+                                    <h2 className='botonEditar'>Editar Sala</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(sala.id)
@@ -224,6 +243,10 @@ export function ListadoAPI(props) {
                         <div key={sillon.id}>
                             <h2>Fila: {sillon.fila}</h2>
                             <h2>Columna: {sillon.columna}</h2>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/sillon/' + sillon.id}>
+                                    <h2 className='botonEditar'>Editar Sillón</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(sillon.id)
@@ -241,6 +264,10 @@ export function ListadoAPI(props) {
                             <h2>Descripción: {comida.descripcion}</h2>
                             <h2>Precio: {comida.precio}</h2>
                             <img src={comida.foto}></img>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/comida/' + comida.id}>
+                                    <h2 className='botonEditar'>Editar Comida</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(comida.id)
@@ -258,6 +285,10 @@ export function ListadoAPI(props) {
                             <h2>Descripción: {bebida.descripcion}</h2>
                             <h2>Precio: {bebida.precio}</h2>
                             <img src={bebida.foto}></img>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/bebida/' + bebida.id}>
+                                    <h2 className='botonEditar'>Editar Bebida</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(bebida.id)
@@ -277,6 +308,10 @@ export function ListadoAPI(props) {
                             <h2>Descripción: {menu.descripcion}</h2>
                             <h2>Precio: {menu.precio}</h2>
                             <img src={menu.foto}></img>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/menu/' + menu.id}>
+                                    <h2 className='botonEditar'>Editar Menú</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(menu.id)
@@ -294,6 +329,10 @@ export function ListadoAPI(props) {
                             <h2>Descripción: {tipoEntrada.descripcion}</h2>
                             <h2>Precio: {tipoEntrada.precio}</h2>
                             <img src={tipoEntrada.foto}></img>
+
+                            <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/tipoentrada/' + tipoEntrada.id}>
+                                    <h2 className='botonEditar'>Editar Tipo de Entrada</h2>
+                            </a>
                             <h2 className='botonBorrar'
                                 onClick={() => {
                                     deleteDato(tipoEntrada.id)

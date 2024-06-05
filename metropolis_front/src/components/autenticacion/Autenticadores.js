@@ -127,6 +127,10 @@ export function validarDescripcion(descripcion){
 export function validarFoto(foto){
     const regex = /(image\/jpeg|image\/jpg|image\/png)/
 
+    if (foto === null || foto === undefined){
+        return false
+    }
+
     if (!regex.test(foto)) {
 
         return false

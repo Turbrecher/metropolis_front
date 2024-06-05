@@ -1026,6 +1026,7 @@ footer {
     padding: 1rem;
     text-align: center; }
   .listadoApi .lista {
+    align-items: center;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: auto;
@@ -1041,10 +1042,21 @@ footer {
         border: solid red;
         background: transparent;
         color: red;
-        transition: border ease 1s, color ease 1s, background ease 1s; }
+        transition: border ease 0.5s, color ease 0.5s, background ease 0.5s; }
         .listadoApi .lista div .botonBorrar:hover {
           border: solid transparent;
           background: red;
+          color: white;
+          transition: border ease 0.5s, color ease 0.5s, background ease 0.5s; }
+      .listadoApi .lista div .botonEditar {
+        border: solid #35d673;
+        background: transparent;
+        color: #35d673;
+        transition: border ease 1s, color ease 1s, background ease 1s;
+        margin-bottom: 1rem; }
+        .listadoApi .lista div .botonEditar:hover {
+          border: solid transparent;
+          background: #35d673;
           color: white;
           transition: border ease 1s, color ease 1s, background ease 1s; }
       .listadoApi .lista div h2 {
