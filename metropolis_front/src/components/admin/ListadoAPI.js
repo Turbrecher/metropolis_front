@@ -32,7 +32,7 @@ export function ListadoAPI(props) {
 
             case "http://localhost:8000/reserva/api/sesiones/":
                 setTitulo("LISTA DE SESIONES")
-                setTipoDato("sesión")
+                setTipoDato("sesion")
                 break
 
             case "http://localhost:8000/reserva/api/entradas/":
@@ -47,7 +47,7 @@ export function ListadoAPI(props) {
 
             case "http://localhost:8000/reserva/api/sillones/":
                 setTitulo("LISTA DE SILLONES")
-                setTipoDato("sillón")
+                setTipoDato("sillon")
                 break
 
             case "http://localhost:8000/compra/api/comidas/":

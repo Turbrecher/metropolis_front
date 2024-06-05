@@ -58,7 +58,6 @@ export function FormularioCrearSesion(props) {
         if (sala === "") {
             errores = true
         }
-        alert(hora)
 
         if (!validarHora(hora)) {
             setErrorHora("La hora no es válida")
