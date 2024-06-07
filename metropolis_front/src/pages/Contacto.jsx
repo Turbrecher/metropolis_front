@@ -1,7 +1,7 @@
 import React from "react";
-import {Header} from '../components/Header'
-import {Nav} from '../components/Nav'
-import {Footer} from '../components/Footer'
+import { Header } from "../components/Header";
+import { Nav } from "../components/Nav";
+import { Footer } from "../components/Footer";
 import { FormularioContacto } from "../components/contacto/FormularioContacto";
 
 export function Contacto() {
@@ -9,9 +9,10 @@ export function Contacto() {
     <>
       <Header />
       <Nav />
-      
-      <FormularioContacto />
-      
+
+      <main>
+        <FormularioContacto />
+      </main>
 
       <Footer />
     </>

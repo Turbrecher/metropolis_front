@@ -100,16 +100,18 @@ export function Reserva() {
       <Header />
       <Nav />
 
-      <div className="reserva">
-        <div className="pantalla">Pantalla</div>
+      <main>
+        <div className="reserva">
+          <div className="pantalla">Pantalla</div>
 
-        <div className="sillones">{recuadrosSillones}</div>
+          <div className="sillones">{recuadrosSillones}</div>
 
-        <div className="leyenda">
-          <Codigo descripcion="Libre" color="#20c249aa" />
-          <Codigo descripcion="Ocupado" color="#bc2016" />
+          <div className="leyenda">
+            <Codigo descripcion="Libre" color="#20c249aa" />
+            <Codigo descripcion="Ocupado" color="#bc2016" />
+          </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
     </>

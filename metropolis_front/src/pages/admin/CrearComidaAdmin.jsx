@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 export function CrearComidaAdmin() {
-
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState([]);
 
@@ -48,12 +47,13 @@ export function CrearComidaAdmin() {
     navigate("/");
   }
 
-
   return (
     <>
       <Header />
       <Nav />
-      <FormularioCrearComida />
+      <main>
+        <FormularioCrearComida />
+      </main>
       <Footer />
     </>
   );

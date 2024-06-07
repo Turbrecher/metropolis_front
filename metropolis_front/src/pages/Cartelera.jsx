@@ -9,8 +9,9 @@ export function Cartelera() {
     <>
       <Header />
       <Nav />
-
-      <Peliculas />
+      <main>
+        <Peliculas />
+      </main>
 
       <Footer />
     </>

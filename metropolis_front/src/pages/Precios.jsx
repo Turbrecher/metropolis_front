@@ -13,12 +13,14 @@ export function Precios() {
       <Header />
       <Nav />
 
-      <div className="precios">
-        <Entradas />
-        <Menus />
-        <Comidas />
-        <Bebidas />
-      </div>
+      <main>
+        <div className="precios">
+          <Entradas />
+          <Menus />
+          <Comidas />
+          <Bebidas />
+        </div>
+      </main>
 
       <Footer />
     </>

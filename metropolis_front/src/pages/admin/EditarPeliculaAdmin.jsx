@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 export function EditarPeliculaAdmin() {
-
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState([]);
 
@@ -44,17 +43,17 @@ export function EditarPeliculaAdmin() {
       });
   }
 
-
   if (usuario.is_superuser != true) {
     navigate("/");
   }
-
 
   return (
     <>
       <Header />
       <Nav />
-      <FormularioEditarPelicula />
+      <main>
+        <FormularioEditarPelicula />
+      </main>
       <Footer />
     </>
   );

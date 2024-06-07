@@ -5,13 +5,13 @@ import { Footer } from "../components/Footer";
 import { FormularioRegistro } from "../components/autenticacion/FormularioRegistro";
 
 export function Register() {
-  
-
   return (
     <>
       <Header />
       <Nav />
-      <FormularioRegistro/>
+      <main>
+        <FormularioRegistro />
+      </main>
       <Footer />
     </>
   );

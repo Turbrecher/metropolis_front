@@ -51,7 +51,9 @@ export function CrearEntradaAdmin() {
     <>
       <Header />
       <Nav />
-      <FormularioCrearEntrada />
+      <main>
+        <FormularioCrearEntrada />
+      </main>
       <Footer />
     </>
   );

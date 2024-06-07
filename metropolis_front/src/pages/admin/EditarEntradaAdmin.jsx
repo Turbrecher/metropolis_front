@@ -51,7 +51,9 @@ export function EditarEntradaAdmin() {
     <>
       <Header />
       <Nav />
-      <FormularioEditarEntrada />
+      <main>
+        <FormularioEditarEntrada />
+      </main>
       <Footer />
     </>
   );

@@ -51,7 +51,9 @@ export function EditarBebidaAdmin() {
     <>
       <Header />
       <Nav />
-      <FormularioEditarBebida />
+      <main>
+        <FormularioEditarBebida />
+      </main>
 
       <Footer />
     </>

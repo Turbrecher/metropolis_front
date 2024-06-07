@@ -1,19 +1,16 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import {Header} from '../components/Header'
-import {Nav} from '../components/Nav'
-import {Footer} from '../components/Footer'
-import {InfoPerfil} from '../components/autenticacion/InfoPerfil'
+import React from "react";
+import { useEffect, useState } from "react";
+import { Header } from "../components/Header";
+import { Nav } from "../components/Nav";
+import { Footer } from "../components/Footer";
+import { InfoPerfil } from "../components/autenticacion/InfoPerfil";
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../components/autenticacion/getCookie";
-import axios from 'axios'
-
+import axios from "axios";
 
 export function Perfil() {
-
-  const navigate = useNavigate()
-  const [usuario, setUsuario] = useState()
-
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState();
 
   let params = {};
 
@@ -39,18 +36,14 @@ export function Perfil() {
       });
   }
 
-
   useEffect(() => {
     //Solo pueden acceder a esta vista los usuarios autenticados
     if (!getCookie("token")) {
       return navigate("/login");
     }
 
-
-    getUsuario()
-
+    getUsuario();
   }, []);
-
 
   //Solo pueden acceder a esta vista los usuarios autenticados
   if (!getCookie("token") || !usuario) {
@@ -58,15 +51,13 @@ export function Perfil() {
   }
 
   return (
-
-  <>
-    <Header />
-    <Nav />
-    <InfoPerfil/>
-    <Footer />
-    
-  </>
-
-    
-  )
+    <>
+      <Header />
+      <Nav />
+      <main>
+        <InfoPerfil />
+      </main>
+      <Footer />
+    </>
+  );
 }

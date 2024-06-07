@@ -43,18 +43,17 @@ export function CrearMenuAdmin() {
       });
   }
 
-
   if (usuario.is_superuser != true) {
     navigate("/");
   }
-
-
 
   return (
     <>
       <Header />
       <Nav />
-      <FormularioCrearMenu />
+      <main>
+        <FormularioCrearMenu />
+      </main>
       <Footer />
     </>
   );

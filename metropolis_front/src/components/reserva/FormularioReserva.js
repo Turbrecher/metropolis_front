@@ -24,6 +24,16 @@ export function FormularioPago(props) {
     const { id_sesion, id_sillon } = useParams()
     const navigate = useNavigate()
 
+    
+
+    let params = {}
+
+    let config = {
+        headers: {
+            "Authorization": "Token " + getCookie("token")
+        }
+    };
+
     function tarjetavalidez() {
         let validez = true
 
@@ -54,14 +64,6 @@ export function FormularioPago(props) {
 
         return validez
     }
-
-    let params = {}
-
-    let config = {
-        headers: {
-            "Authorization": "Token " + getCookie("token")
-        }
-    };
 
     //Funcion que almacena todos los datos de un json en un array
     function json_to_array(json) {

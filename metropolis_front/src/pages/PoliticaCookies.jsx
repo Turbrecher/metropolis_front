@@ -10,7 +10,9 @@ export function PoliticaCookies() {
       <Header />
       <Nav />
 
-      <Cookies/>
+      <main>
+        <Cookies />
+      </main>
 
       <Footer />
     </>

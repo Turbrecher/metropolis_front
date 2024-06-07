@@ -51,7 +51,9 @@ export function CrearUsuarioAdmin() {
     <>
       <Header />
       <Nav />
-      <FormularioCrearUsuarioAdministrador />
+      <main>
+        <FormularioCrearUsuarioAdministrador />
+      </main>
       <Footer />
     </>
   );

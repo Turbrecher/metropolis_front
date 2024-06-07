@@ -17,7 +17,9 @@ export function Login() {
     <>
       <Header />
       <Nav />
-      <FormularioLogin />
+      <main>
+        <FormularioLogin />
+      </main>
       <Footer />
     </>
   );

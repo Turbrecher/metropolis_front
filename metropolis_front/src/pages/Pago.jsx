@@ -38,9 +38,8 @@ export function Pago() {
   }
 
   useEffect(() => {
-    getUsuario()
+    getUsuario();
   }, []);
-
 
   //Solo pueden acceder a esta vista los usuarios autenticados
   if (!getCookie("token") || !usuario) {
@@ -51,7 +50,9 @@ export function Pago() {
     <>
       <Header />
       <Nav />
-      <FormularioPago />
+      <main>
+        <FormularioPago />
+      </main>
 
       <Footer />
     </>

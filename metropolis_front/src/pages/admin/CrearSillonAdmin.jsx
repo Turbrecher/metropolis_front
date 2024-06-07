@@ -43,18 +43,17 @@ export function CrearSillonAdmin() {
       });
   }
 
-
-
   if (usuario.is_superuser != true) {
     navigate("/");
   }
-
 
   return (
     <>
       <Header />
       <Nav />
-      <FormularioCrearSillon />
+      <main>
+        <FormularioCrearSillon />
+      </main>
       <Footer />
     </>
   );

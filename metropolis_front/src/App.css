@@ -48,8 +48,7 @@ nav {
       transition: text-shadow ease 0.3s, scale ease 0.3s; }
 
 main {
-  background: transparent;
-  background-image: url("http://localhost:8000/images/metropolis.png");
+  background-image: url(http://localhost:8000/images/metropolis.png);
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: 100%;

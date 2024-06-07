@@ -9,7 +9,9 @@ export function InfoPelicula() {
     <>
       <Header />
       <Nav />
-      <DetallesPelicula/>
+      <main>
+        <DetallesPelicula />
+      </main>
       <Footer />
     </>
   );

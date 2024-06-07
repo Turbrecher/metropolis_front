@@ -17,8 +17,6 @@ export function ListaAdministrador() {
     }
 
     getUsuario();
-
-    
   }, []);
 
   let params = {};
@@ -45,7 +43,6 @@ export function ListaAdministrador() {
       });
   }
 
-
   if (usuario.is_superuser != true) {
     navigate("/");
   }
@@ -54,7 +51,9 @@ export function ListaAdministrador() {
     <>
       <Header />
       <Nav />
-      <ListadoAPI />
+      <main>
+        <ListadoAPI />
+      </main>
       <Footer />
     </>
   );

@@ -51,7 +51,9 @@ export function EditarUsuarioAdmin() {
     <>
       <Header />
       <Nav />
-      <FormularioEditarUsuarioAdministrador />
+      <main>
+        <FormularioEditarUsuarioAdministrador />
+      </main>
       <Footer />
     </>
   );

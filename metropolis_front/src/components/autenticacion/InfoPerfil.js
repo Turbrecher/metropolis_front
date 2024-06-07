@@ -47,7 +47,7 @@ export function InfoPerfil(props) {
 
         //Hacemos la peticion GET a la API
         await axios.get(
-            "http://localhost:8000/reserva/api/entradas/?id_usuario=" + response.data.id, params, config
+            "http://localhost:8000/reserva/api/entradas/?usuario__id=" + response.data.id, params, config
         ).then((response) => {
             setEntradasCompradas(response.data)
             console.log(response.data)
@@ -260,7 +260,7 @@ export function InfoPerfil(props) {
                 {entradas_compradas.map(
                     (entrada) => (
                         <Entrada
-                            foto=  {"http://localhost:8000/" + entrada.sesion.pelicula.cartel}
+                            foto=  {entrada.sesion.pelicula.cartel}
                             pelicula={entrada.sesion.pelicula.titulo}
                             hora={entrada.sesion.hora}
                             fecha_compra={entrada.fecha_compra}

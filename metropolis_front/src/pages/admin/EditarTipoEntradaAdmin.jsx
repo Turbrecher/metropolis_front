@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 export function EditarTipoEntradaAdmin() {
-
   const navigate = useNavigate();
   const [usuario, setUsuario] = useState([]);
 
@@ -44,7 +43,6 @@ export function EditarTipoEntradaAdmin() {
       });
   }
 
-
   if (usuario.is_superuser != true) {
     navigate("/");
   }
@@ -53,7 +51,9 @@ export function EditarTipoEntradaAdmin() {
     <>
       <Header />
       <Nav />
-      <FormularioEditarTipoEntrada />
+      <main>
+        <FormularioEditarTipoEntrada />
+      </main>
       <Footer />
     </>
   );

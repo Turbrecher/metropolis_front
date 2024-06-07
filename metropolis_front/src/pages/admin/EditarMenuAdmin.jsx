@@ -43,18 +43,17 @@ export function EditarMenuAdmin() {
       });
   }
 
-
   if (usuario.is_superuser != true) {
     navigate("/");
   }
-
-
 
   return (
     <>
       <Header />
       <Nav />
-      <FormularioEditarMenu />
+      <main>
+        <FormularioEditarMenu />
+      </main>
       <Footer />
     </>
   );
