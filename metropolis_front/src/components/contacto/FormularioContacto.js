@@ -111,7 +111,7 @@ export function FormularioContacto(props) {
                         onClick={contact}
                         className="submit"
                         type="button"
-                        value={"Registrarse"}
+                        value={"Enviar"}
                     />
                 </form>
 

@@ -712,6 +712,8 @@ footer {
     justify-content: center;
     gap: 2rem; }
     .detallesPelicula .sesionesPelicula .sesion {
+      box-shadow: 5px 5px 25px #a5931c;
+      background: #202d3d;
       border: solid white 1px;
       border-bottom-right-radius: 1.5rem;
       padding: 2rem;
@@ -1034,7 +1036,8 @@ footer {
     column-gap: 1rem;
     width: 75%; }
     .listadoApi .lista div {
-      border: solid white;
+      border: solid transparent;
+      background: #0a1c3a;
       padding: 1rem;
       text-align: center; }
       .listadoApi .lista div .botonBorrar {

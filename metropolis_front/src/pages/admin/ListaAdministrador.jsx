@@ -36,15 +36,20 @@ export function ListaAdministrador() {
         config
       )
       .then((response) => {
+        console.log(response.data)
         setUsuario(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        navigate("/")//Si hay error de token, vuelve a la cartelera
       });
   }
 
   if (usuario.is_superuser != true) {
     navigate("/");
+  }
+
+  if(!usuario){
+    navigate("/")
   }
 
   return (

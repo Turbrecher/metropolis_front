@@ -36,6 +36,8 @@ import { EditarSillonAdmin } from "./pages/admin/EditarSillonAdmin.jsx"
 import { EditarTipoEntradaAdmin } from "./pages/admin/EditarTipoEntradaAdmin.jsx"
 import { EditarUsuarioAdmin } from "./pages/admin/EditarUsuarioAdmin.jsx"
 
+import {Error404} from "./pages/Error404.jsx"
+
 function App() {
   return (
     //Configuracion de las rutas de navegacion.
@@ -79,6 +81,9 @@ function App() {
         <Route path="/admin/edit/pelicula/:key" element={<EditarPeliculaAdmin />} />
         <Route path="/admin/edit/tipoentrada/:key" element={<EditarTipoEntradaAdmin />} />
         <Route path="/admin/edit/usuario/:key" element={<EditarUsuarioAdmin />} />
+        
+        
+        <Route path="*" element={<Error404/>} />
 
 
       </Routes>

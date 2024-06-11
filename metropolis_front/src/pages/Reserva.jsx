@@ -28,6 +28,15 @@ export function Reserva() {
 
   async function cargarSesion() {
     const respuesta = await obtenerSesion(id_sesion);
+
+    /*Si hay algun error en la busqueda de sesion*/
+    if(!respuesta.data){
+      navigate("/")
+      return
+    }
+
+    
+
     setSesion(respuesta.data);
     setSillones(respuesta.data.sala.sillones);
 

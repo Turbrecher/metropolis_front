@@ -108,7 +108,13 @@ export function FormularioPago(props) {
         ).then(//Recibir la respuesta
             (response) => {
                 setSesion(response.data)
-                console.log(response.data)
+
+
+                let SILLON_OCUPADO = json_to_array(response.data.sillones_ocupados).includes(parseInt(id_sillon))
+                if(SILLON_OCUPADO){
+                    navigate("/")
+                }
+
             }
         ).catch(//Caso de error
             (error) => {
@@ -129,7 +135,7 @@ export function FormularioPago(props) {
             }
         ).catch(//Caso de error
             (error) => {
-                console.log(error)
+                navigate("/")
             })
 
     }
@@ -213,7 +219,7 @@ export function FormularioPago(props) {
         let date = new Date()
         let fecha_compra = date.toISOString().split('T')[0]
         
-        alert(fecha_compra)
+        alert("Entrada comprada!")
 
         //Creamos JSON con el usuario
         let entrada = {
@@ -323,6 +329,8 @@ export function FormularioPago(props) {
                         <h5 style={{ color: "red" }}>{errorCodigoTarjeta}</h5>
 
 
+
+                        <h5 style={{ color: "#ffdd0e" }}>Atencion! Una vez efectuado el pago, no se aceptarán devoluciones.</h5>
                         <input
                             onClick={pagar}
                             className="submit"

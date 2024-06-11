@@ -1,5 +1,5 @@
 export function validarUsername(username) {
-    const regex = /^[A-Za-z]{3,50}/
+    const regex = /(^[A-Za-z]{3,50}$)|(^[A-Za-z]{3,50}[0-9]{1,5}$)/
 
     if (!regex.test(username)) {
 
@@ -11,7 +11,7 @@ export function validarUsername(username) {
 }
 
 export function validarNombre(nombre) {
-    const regex = /[A-Za-z]{3,50}/
+    const regex = /^[A-Za-z]{3,50}/
 
     if (!regex.test(nombre)) {
 
@@ -24,7 +24,7 @@ export function validarNombre(nombre) {
 
 
 export function validarApellidos(apellidos) {
-    const regex = /^[A-Za-z]{3,50}/
+    const regex = /(^[A-Za-z]{3,50}$)|^[A-Za-z]{3,50}[ ]{1}[A-Za-z]{3,50}$/
 
     if (!regex.test(apellidos)) {
 
@@ -38,7 +38,7 @@ export function validarApellidos(apellidos) {
 
 export function validarPassword(password) {
 
-    const regex = /[A-Za-z0-9]{5,}/
+    const regex = /^[A-Za-z0-9?_]{5,25}$/
 
     if (!regex.test(password)) {
 
@@ -50,9 +50,10 @@ export function validarPassword(password) {
 }
 
 
+
 export function validarPasswordPerfil(password) {
 
-    const regex = /[A-Za-z0-9]{5,}/
+    const regex = /^[A-Za-z0-9?_]{5,25}$/
 
     if(password.length === 0){
         return true
@@ -80,7 +81,7 @@ export function validarEmail(email) {
 }
 
 export function validarNumeroTarjeta(numero) {
-    const regex = /[0-9]{16}/
+    const regex = /^[0-9]{16}$/
     if (!regex.test(numero)) {
 
         return false
@@ -92,7 +93,7 @@ export function validarNumeroTarjeta(numero) {
 }
 
 export function validarCodigoTarjeta(codigo) {
-    const regex = /[0-9]{3}/
+    const regex = /^[0-9]{3}$/
     if (!regex.test(codigo)) {
 
         return false

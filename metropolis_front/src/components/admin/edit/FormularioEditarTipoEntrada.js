@@ -29,8 +29,10 @@ export function FormularioEditarTipoEntrada(props) {
                 setTipoEntradaSeleccionada(response.data)
                 setNombre(response.data.nombre)
                 setDescripcion(response.data.descripcion)
-                setFoto(response.data.foto)
                 setPrecio(response.data.precio)
+                setFoto(response.data.foto)
+               
+                
             }).
             catch((error) => {
                 console.log(error)
@@ -40,6 +42,7 @@ export function FormularioEditarTipoEntrada(props) {
 
 
     async function edit() {
+
 
         let errores = false
 

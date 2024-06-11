@@ -39,8 +39,12 @@ export function CrearBebidaAdmin() {
         setUsuario(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        navigate("/")//Si hay error de token, vuelve a la cartelera
       });
+  }
+
+  if(usuario.is_superuser == undefined){
+    navigate("/");
   }
 
   if (usuario.is_superuser != true) {

@@ -110,7 +110,10 @@ export function ListadoAPI(props) {
         axios.delete(url_borrado)
             .then(
                 (response) => {
-                    console.log(response.data)
+                    axios.get(url).then((response)=>{
+                        setObjetosJSOn(response.data)
+                    })
+                    
                 }
             ).catch(
                 (error) => {

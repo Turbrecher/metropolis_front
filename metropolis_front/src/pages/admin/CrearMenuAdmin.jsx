@@ -39,7 +39,7 @@ export function CrearMenuAdmin() {
         setUsuario(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        navigate("/")//Si hay error de token, vuelve a la cartelera
       });
   }
 
