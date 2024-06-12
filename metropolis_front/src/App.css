@@ -307,6 +307,7 @@ footer {
         margin: 0 auto;
         margin-bottom: 1rem; }
         .precios .tarjetas .tarjeta .img img {
+          object-fit: contain;
           width: 100%;
           height: 100%; } }
 @media screen and (width >= 768px) {
@@ -334,6 +335,7 @@ footer {
         overflow: hidden;
         margin-bottom: 1rem; }
         .precios .tarjetas .tarjeta .img img {
+          object-fit: contain;
           width: 100%;
           height: 100%; } }
 @media screen and (width >= 992px) {
@@ -354,40 +356,44 @@ footer {
       .precios .tarjetas .tarjeta .precio {
         font-size: 4rem; }
       .precios .tarjetas .tarjeta .img {
+        object-fit: contain;
         margin-bottom: 0;
         width: 100%;
         height: 150px;
         overflow: hidden;
         margin-bottom: 1rem; }
         .precios .tarjetas .tarjeta .img img {
+          object-fit: contain;
           width: 100%;
           height: 100%; } }
 @media screen and (width >= 1200px) {
-  .precios .titulo {
-    text-align: center;
-    margin: 1rem 0 2rem 0;
-    font-size: 3rem; }
-  .precios .tarjetas {
-    grid-template-columns: auto auto auto;
-    column-gap: 2rem;
-    justify-content: center; }
-    .precios .tarjetas * {
-      margin-bottom: 0.33rem; }
-    .precios .tarjetas .tarjeta {
-      height: fit-content;
-      padding: 1rem;
-      width: 320px; }
-      .precios .tarjetas .tarjeta .precio {
-        font-size: 4rem; }
-      .precios .tarjetas .tarjeta .img {
-        margin-bottom: 0;
-        width: 100%;
-        height: 250px;
-        overflow: hidden;
-        margin-bottom: 1rem; }
-        .precios .tarjetas .tarjeta .img img {
-          width: 100%;
-          height: 100%; } }
+  .precios {
+    margin-bottom: 3rem; }
+    .precios .titulo {
+      text-align: center;
+      margin: 1rem 0 2rem 0;
+      font-size: 3rem; }
+    .precios .tarjetas {
+      grid-template-columns: auto auto auto;
+      column-gap: 2rem;
+      justify-content: center; }
+      .precios .tarjetas * {
+        margin-bottom: 0.33rem; }
+      .precios .tarjetas .tarjeta {
+        height: fit-content;
+        padding: 1rem;
+        width: 320px; }
+        .precios .tarjetas .tarjeta .precio {
+          font-size: 4rem; }
+        .precios .tarjetas .tarjeta .img {
+          margin-bottom: 0;
+          overflow: hidden;
+          margin-bottom: 1rem;
+          height: 300px; }
+          .precios .tarjetas .tarjeta .img img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%; } }
 .login {
   display: block; }
   .login .titulo {
@@ -700,7 +706,7 @@ footer {
       height: 100%; }
   .detallesPelicula .informacionPelicula {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 20% 50% 30%;
     column-gap: 5rem; }
     .detallesPelicula .informacionPelicula .portada {
       width: 300px; }
@@ -871,11 +877,23 @@ footer {
     gap: 1rem; }
     .profile .entradas_compradas .entrada {
       align-items: start;
+      box-shadow: 5px 5px 25px #a5931c;
       display: grid;
       justify-content: start;
       text-align: left;
       background: #0a1c3a;
       padding: 1rem; }
+      .profile .entradas_compradas .entrada a {
+        background: #0068c8;
+        display: block;
+        margin-top: 1rem;
+        padding: 1rem;
+        text-decoration: none;
+        transition: scale ease 0.33s;
+        width: fit-content; }
+        .profile .entradas_compradas .entrada a:hover {
+          transition: scale ease 0.33s;
+          scale: 110%; }
 
 @media screen and (width > 0px) and (width < 992px) {
   .profile {

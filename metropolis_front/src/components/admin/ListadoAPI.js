@@ -263,10 +263,10 @@ export function ListadoAPI(props) {
                 return objetosJSON.map(
                     (comida) => (
                         <div key={comida.id}>
+                            <img src={comida.foto}></img>
                             <h2>Nombre: {comida.nombre}</h2>
                             <h2>Descripción: {comida.descripcion}</h2>
                             <h2>Precio: {comida.precio}</h2>
-                            <img src={comida.foto}></img>
 
                             <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/comida/' + comida.id}>
                                     <h2 className='botonEditar'>Editar Comida</h2>
@@ -284,10 +284,10 @@ export function ListadoAPI(props) {
                 return objetosJSON.map(
                     (bebida) => (
                         <div key={bebida.id}>
+                            <img src={bebida.foto}></img>
                             <h2>Nombre: {bebida.nombre}</h2>
                             <h2>Descripción: {bebida.descripcion}</h2>
                             <h2>Precio: {bebida.precio}</h2>
-                            <img src={bebida.foto}></img>
 
                             <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/bebida/' + bebida.id}>
                                     <h2 className='botonEditar'>Editar Bebida</h2>
@@ -305,12 +305,12 @@ export function ListadoAPI(props) {
                 return objetosJSON.map(
                     (menu) => (
                         <div key={menu.id}>
+                            <img src={menu.foto}></img>
                             <h2>Nombre: {menu.nombre}</h2>
                             <h2>Comida: {menu.comida.nombre}</h2>
                             <h2>Bebida: {menu.bebida.nombre}</h2>
                             <h2>Descripción: {menu.descripcion}</h2>
                             <h2>Precio: {menu.precio}</h2>
-                            <img src={menu.foto}></img>
 
                             <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/menu/' + menu.id}>
                                     <h2 className='botonEditar'>Editar Menú</h2>
@@ -328,10 +328,10 @@ export function ListadoAPI(props) {
                 return objetosJSON.map(
                     (tipoEntrada) => (
                         <div key={tipoEntrada.id}>
+                            <img src={tipoEntrada.foto}></img>
                             <h2>Nombre: {tipoEntrada.nombre}</h2>
                             <h2>Descripción: {tipoEntrada.descripcion}</h2>
                             <h2>Precio: {tipoEntrada.precio}</h2>
-                            <img src={tipoEntrada.foto}></img>
 
                             <a style={{textDecoration:"none"}} target='_blank' href={'/admin/edit/tipoentrada/' + tipoEntrada.id}>
                                     <h2 className='botonEditar'>Editar Tipo de Entrada</h2>
