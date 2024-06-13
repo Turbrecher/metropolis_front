@@ -50,11 +50,10 @@ export function InfoPerfil(props) {
             "http://localhost:8000/reserva/api/entradas/?usuario__id=" + response.data.id, params, config
         ).then((response) => {
             setEntradasCompradas(response.data)
-            console.log(response.data)
 
 
         }).catch(function (error) {
-            console.log(error);
+            alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
         });
 
     }
@@ -71,7 +70,7 @@ export function InfoPerfil(props) {
 
 
         }).catch(function (error) {
-            console.log(error);
+            alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
         });
 
 

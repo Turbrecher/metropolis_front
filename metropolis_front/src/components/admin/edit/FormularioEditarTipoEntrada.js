@@ -25,7 +25,6 @@ export function FormularioEditarTipoEntrada(props) {
     async function getTipoEntradaSeleccionada(){
         axios.get("http://localhost:8000/compra/api/tiposentrada/" + key).
             then((response) => {
-                console.log(response.data)
                 setTipoEntradaSeleccionada(response.data)
                 setNombre(response.data.nombre)
                 setDescripcion(response.data.descripcion)
@@ -35,7 +34,7 @@ export function FormularioEditarTipoEntrada(props) {
                 
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -100,7 +99,6 @@ export function FormularioEditarTipoEntrada(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 
@@ -161,7 +159,6 @@ export function FormularioEditarTipoEntrada(props) {
                             texto="Foto"
                             onchange={(e) => {
                                 setFoto(e.target.files[0])
-                                console.log(e.target.files[0])
                                 if (!validarFoto(e.target.files[0].type)) {
                                     setFotoError("Foto inválida")
                                 } else {

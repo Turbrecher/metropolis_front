@@ -22,7 +22,7 @@ export function Menus(props) {
     return (
 
         <>
-            <h1 className="titulo">MENUS</h1>
+            <h1 className="titulo">MENÚS</h1>
 
             <div className="tarjetas">
                 {tarjetasMenu.map(e => (

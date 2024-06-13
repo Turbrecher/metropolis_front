@@ -87,11 +87,10 @@ export function ListadoAPI(props) {
                 (response) => {
                     setUrl(e.target.value)
                     setObjetosJSOn(response.data)
-                    console.log(response.data)
                 }).
             catch(
                 (error) => {
-                    console.log(error)
+                    alert("Ha ocurrido un error, no se han podido acceder a los datos")
                 }
             );
 
@@ -117,7 +116,7 @@ export function ListadoAPI(props) {
                 }
             ).catch(
                 (error) => {
-                    console.log(error.data)
+                    alert("Ha ocurrido un error, no se ha borrado el objeto")
                 })
 
 
@@ -369,7 +368,7 @@ export function ListadoAPI(props) {
             <select onInput={loadData}>
 
                 <option value=" ">
-                    Elija una opcion
+                    Elija una opción
                 </option>
 
                 <option value="http://localhost:8000/autenticacion/api/usuarios/">
@@ -377,7 +376,7 @@ export function ListadoAPI(props) {
                 </option>
 
                 <option value="http://localhost:8000/cartelera/api/peliculas/">
-                    Peliculas
+                    Películas
                 </option>
 
                 <option value="http://localhost:8000/reserva/api/sesiones/">
@@ -405,7 +404,7 @@ export function ListadoAPI(props) {
                 </option>
 
                 <option value="http://localhost:8000/compra/api/menus/">
-                    Menus
+                    Menús
                 </option>
 
                 <option value="http://localhost:8000/compra/api/tiposentrada/">

@@ -36,7 +36,6 @@ export function ListaAdministrador() {
         config
       )
       .then((response) => {
-        console.log(response.data)
         setUsuario(response.data);
       })
       .catch(function (error) {

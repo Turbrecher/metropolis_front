@@ -12,7 +12,6 @@ export function Peliculas(props) {
         async function cargarPeliculas() {
             const respuesta = await obtenerPeliculas()
             setTarjetasPelicula(respuesta.data)
-            console.log(respuesta.data)
         }
 
         cargarPeliculas()
@@ -26,7 +25,7 @@ export function Peliculas(props) {
 
 
                 <h1 className="titulo">
-                    PELICULAS
+                    PELÍCULAS
                     <span style={{ color: "#ffdd0e" }}> EN </span>
                     CARTELERA
                 </h1>

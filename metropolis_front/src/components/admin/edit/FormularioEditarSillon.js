@@ -26,13 +26,12 @@ export function FormularioEditarSillon(props) {
     async function getSillonSeleccionado() {
         axios.get("http://localhost:8000/reserva/api/sillones/" + key).
             then((response) => {
-                console.log(response.data)
                 setSillonSeleccionado(response.data)
                 setFila(response.data.fila)
                 setColumna(response.data.columna)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -73,7 +72,6 @@ export function FormularioEditarSillon(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 

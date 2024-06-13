@@ -65,16 +65,16 @@ export function DetallesPelicula(props) {
 
                     <div className='informacion_adicional'>
 
-                        <h4>Duracion</h4>
+                        <h4>Duración</h4>
                         <p>{pelicula.duracion}</p>
 
                         <h4>Fecha de estreno</h4>
                         <p>{pelicula.fecha_lanzamiento}</p>
 
-                        <h4>Generos</h4>
+                        <h4>Géneros</h4>
                         <p>{pelicula.genero}</p>
 
-                        <h4>Clasificacion</h4>
+                        <h4>Clasificación</h4>
                         <p>{pelicula.pegi}</p>
 
 

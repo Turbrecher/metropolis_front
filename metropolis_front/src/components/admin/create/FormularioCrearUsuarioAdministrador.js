@@ -51,6 +51,7 @@ export function FormularioCrearUsuarioAdministrador(props) {
             return
         }
 
+        alert("Es un usuario administrador? -> " + is_superuser)
 
         let usuario = {
             "username": username,
@@ -66,10 +67,8 @@ export function FormularioCrearUsuarioAdministrador(props) {
             usuario
         ).then((response)=>{
             alert("El usuario " + username + " se creó correctamente")
-            console.log(response.data)
         }).catch((error)=>{
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
     }

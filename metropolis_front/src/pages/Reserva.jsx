@@ -95,7 +95,7 @@ export function Reserva() {
         setUsuario(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
       });
   }
 

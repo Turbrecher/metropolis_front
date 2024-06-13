@@ -40,7 +40,7 @@ export function FormularioEditarSesion(props) {
 
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -48,22 +48,20 @@ export function FormularioEditarSesion(props) {
     async function getPeliculas() {
         axios.get("http://localhost:8000/cartelera/api/peliculas/").
             then((response) => {
-                console.log(response.data)
                 setPeliculas(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
     async function getSalas() {
         axios.get("http://localhost:8000/reserva/api/salas/").
             then((response) => {
-                console.log(response.data)
                 setSalas(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -123,7 +121,6 @@ export function FormularioEditarSesion(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 

@@ -27,7 +27,6 @@ export function FormularioEditarBebida(props) {
     async function getBebidaSeleccionada() {
         axios.get("http://localhost:8000/compra/api/bebidas/" + key).
             then((response) => {
-                console.log(response.data)
                 setBebidaSeleccionada(response.data)
                 setNombre(response.data.nombre)
                 setDescripcion(response.data.descripcion)
@@ -35,7 +34,7 @@ export function FormularioEditarBebida(props) {
                 setPrecio(response.data.precio)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -92,7 +91,6 @@ export function FormularioEditarBebida(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 
@@ -150,7 +148,6 @@ export function FormularioEditarBebida(props) {
                             texto="Foto"
                             onchange={(e) => {
                                 setFoto(e.target.files[0])
-                                console.log(e.target.files[0])
                                 if (!validarFoto(e.target.files[0].type)) {
                                     setFotoError("Foto inválida")
                                 } else {

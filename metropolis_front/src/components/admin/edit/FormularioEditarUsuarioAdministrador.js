@@ -31,7 +31,7 @@ export function FormularioEditarUsuarioAdministrador(props) {
 
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -86,10 +86,8 @@ export function FormularioEditarUsuarioAdministrador(props) {
             usuario
         ).then((response)=>{
             alert("El usuario " + username + " se editó correctamente")
-            console.log(response.data)
         }).catch((error)=>{
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
     }

@@ -129,7 +129,6 @@ export function FormularioCrearPelicula(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 

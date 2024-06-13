@@ -88,12 +88,11 @@ export function FormularioPago(props) {
         ).then(//Recibir la respuesta
             (response) => {
                 setUsuario(response.data)
-                console.log(response.data)
 
 
             }).catch(//Caso de error
                 (error) => {
-                    console.log(error);
+                    alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
 
                 });
 
@@ -118,7 +117,7 @@ export function FormularioPago(props) {
             }
         ).catch(//Caso de error
             (error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
 
     }
@@ -131,7 +130,6 @@ export function FormularioPago(props) {
         ).then(//Recibir la respuesta
             (response) => {
                 setSillon(response.data)
-                console.log(response.data)
             }
         ).catch(//Caso de error
             (error) => {
@@ -176,11 +174,10 @@ export function FormularioPago(props) {
         ).then(//Recibir la respuesta
             (response) => {
                 setTipoEntrada(response.data[0])
-                console.log(response.data[0])
             }
         ).catch(//Caso de error
             (error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
 
     }
@@ -205,12 +202,11 @@ export function FormularioPago(props) {
             "http://localhost:8000/reserva/api/sesiones/" + sesion.id + "/",
             sesion_subida
         ).then((response) => {
-            console.log("Correcto cambio de sesion")
             //Redirigimos a la cartelera
             navigate("/cartelera")
 
         }).catch(function (error) {
-            console.log(error);
+            alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
         });
     }
 
@@ -237,10 +233,10 @@ export function FormularioPago(props) {
             "http://localhost:8000/reserva/api/entradas/",
             entrada
         ).then((response) => {
-            console.log("Correcta subida de entrada")
+            alert("¡Entrada creada correctamente!")
 
         }).catch(function (error) {
-            console.log(error);
+            alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
         });
     }
 

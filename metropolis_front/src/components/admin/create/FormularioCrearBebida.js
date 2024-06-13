@@ -72,7 +72,6 @@ export function FormularioCrearBebida(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 
@@ -128,7 +127,6 @@ export function FormularioCrearBebida(props) {
                             texto="Foto"
                             onchange={(e) => {
                                 setFoto(e.target.files[0])
-                                console.log(e.target.files[0])
                                 if (!validarFoto(e.target.files[0].type)) {
                                     setFotoError("Foto inválida")
                                 } else {

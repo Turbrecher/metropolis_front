@@ -28,7 +28,7 @@ export function Nav() {
 
 
         }).catch(function (error) {
-            console.log(error);
+            
         });
     }
 
@@ -37,7 +37,7 @@ export function Nav() {
             <a href="/cartelera">Cartelera</a>
             <a href="/precios">Precios</a>
             <a href="/contacto">Contacto</a>
-            <a href="/login">Iniciar Sesion</a>
+            <a href="/login">Iniciar Sesión</a>
 
 
         </nav>;
@@ -52,7 +52,7 @@ export function Nav() {
                 <a href="/precios">Precios</a>
                 <a href="/contacto">Contacto</a>
                 <a href="/profile">Perfil</a>
-                <a href="/logout">Cerrar Sesion</a>
+                <a href="/logout">Cerrar Sesión</a>
 
             </nav>;
     }
@@ -64,7 +64,7 @@ export function Nav() {
                 <a href="/precios">Precios</a>
                 <a href="/contacto">Contacto</a>
                 <a href="/profile">Perfil</a>
-                <a href="/logout">Cerrar Sesion</a>
+                <a href="/logout">Cerrar Sesión</a>
                 <a href="/admin/lista">Administrar</a>
 
             </nav>;

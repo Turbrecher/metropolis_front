@@ -36,7 +36,6 @@ export function FormularioEditarMenu(props) {
     async function getMenuSeleccionado() {
         axios.get("http://localhost:8000/compra/api/menus/" + key).
             then((response) => {
-                console.log(response.data)
                 setMenuSeleccionado(response.data)
                 setNombre(response.data.nombre)
                 setDescripcion(response.data.descripcion)
@@ -46,29 +45,27 @@ export function FormularioEditarMenu(props) {
                 setBebidaDelMenu(response.data.bebida)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
     async function getComidas() {
         axios.get("http://localhost:8000/compra/api/comidas/").
             then((response) => {
-                console.log(response.data)
                 setComidas(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
     async function getBebidas() {
         axios.get("http://localhost:8000/compra/api/bebidas/").
             then((response) => {
-                console.log(response.data)
                 setBebidas(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -144,7 +141,6 @@ export function FormularioEditarMenu(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 
@@ -202,7 +198,6 @@ export function FormularioEditarMenu(props) {
                             texto="Foto"
                             onchange={(e) => {
                                 setFoto(e.target.files[0])
-                                console.log(e.target.files[0])
                                 if (!validarFoto(e.target.files[0].type)) {
                                     setFotoError("Foto inválida")
                                 } else {

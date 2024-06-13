@@ -67,12 +67,10 @@ export function FormularioCrearTipoEntrada(props) {
                 }
             }
         ).then((response) => {
-
             alert("El tipo de entrada con nombre: " + response.data.nombre + " ha sido creada!")
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 
@@ -128,7 +126,6 @@ export function FormularioCrearTipoEntrada(props) {
                             texto="Foto"
                             onchange={(e) => {
                                 setFoto(e.target.files[0])
-                                console.log(e.target.files[0])
                                 if (!validarFoto(e.target.files[0].type)) {
                                     setFotoError("Foto inválida")
                                 } else {

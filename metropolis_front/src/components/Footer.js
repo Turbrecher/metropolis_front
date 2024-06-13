@@ -13,11 +13,11 @@ export function Footer() {
             <div className="enlaces_interes">
 
                 <div className="columna">
-                    <a href="/privacidad">Politica de Privacidad</a>
+                    <a href="/privacidad">Política de Privacidad</a>
                 </div>
 
                 <div className="columna">
-                    <a href="/cookies">Politica de Cookies</a>
+                    <a href="/cookies">Política de Cookies</a>
                 </div>
 
             </div>

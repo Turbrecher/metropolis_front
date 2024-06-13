@@ -24,44 +24,40 @@ export function FormularioCrearEntrada(props) {
     async function getUsuarios() {
         axios.get("http://localhost:8000/autenticacion/api/usuarios/").
             then((response) => {
-                console.log(response.data)
                 setUsuarios(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
     async function getSesiones() {
         axios.get("http://localhost:8000/reserva/api/sesiones/").
             then((response) => {
-                console.log(response.data)
                 setSesiones(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
     async function getSillones() {
         axios.get("http://localhost:8000/reserva/api/sillones/").
             then((response) => {
-                console.log(response.data)
                 setSillones(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
     async function getTiposEntrada() {
         axios.get("http://localhost:8000/compra/api/tiposentrada/").
             then((response) => {
-                console.log(response.data)
                 setTiposEntrada(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -121,7 +117,6 @@ export function FormularioCrearEntrada(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 

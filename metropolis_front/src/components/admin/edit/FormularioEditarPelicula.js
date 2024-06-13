@@ -62,7 +62,7 @@ export function FormularioEditarPelicula(props) {
                 setCartel(response.data.cartel)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -156,7 +156,6 @@ export function FormularioEditarPelicula(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 

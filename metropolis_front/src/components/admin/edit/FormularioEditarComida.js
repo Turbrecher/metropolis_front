@@ -28,7 +28,6 @@ export function FormularioEditarComida(props) {
     async function getComidaSeleccionada() {
         axios.get("http://localhost:8000/compra/api/comidas/" + key).
             then((response) => {
-                console.log(response.data)
                 setComidaSeleccionada(response.data)
                 setNombre(response.data.nombre)
                 setDescripcion(response.data.descripcion)
@@ -36,7 +35,7 @@ export function FormularioEditarComida(props) {
                 setPrecio(response.data.precio)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -98,7 +97,6 @@ export function FormularioEditarComida(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 
@@ -156,7 +154,6 @@ export function FormularioEditarComida(props) {
                             texto="Foto"
                             onchange={(e) => {
                                 setFoto(e.target.files[0])
-                                console.log(e.target.files[0])
                                 if (!validarFoto(e.target.files[0].type)) {
                                     setFotoError("Foto inválida")
                                 } else {

@@ -25,11 +25,10 @@ export function FormularioCrearSala(props) {
     async function getSillones() {
         await axios.get("http://localhost:8000/reserva/api/sillones/").
             then((response) => {
-                console.log(response.data)
                 setSillones(response.data)
             }).
             catch((error) => {
-                console.log(error)
+                alert("Ha ocurrido un error, no se ha podido acceder a los datos de la base de datos")
             })
     }
 
@@ -69,7 +68,6 @@ export function FormularioCrearSala(props) {
 
         }).catch(function (error) {
             alert("Ha ocurrido un error")
-            console.log(error)
         });
 
 
@@ -132,7 +130,6 @@ export function FormularioCrearSala(props) {
                             }
 
                             setSillonesSeleccionados(sillones)
-                            console.log(sillones)
                         }}>
                             {sillones.map((sillon) => (
                                 <option value={sillon.id} key={sillon.id}>Fila {sillon.fila} // Columna {sillon.columna}</option>
